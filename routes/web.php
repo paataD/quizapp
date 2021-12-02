@@ -5,6 +5,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AppUserController;
 use App\Http\Controllers\ManageUserController;
 use App\Http\Controllers\SectionsController;
+use App\Http\Controllers\ResultsController;
 use App\Http\Controllers\QuestionsController;
 
 /*
@@ -50,14 +51,36 @@ Route::middleware(['auth', 'verified', 'role:admin'])->prefix('admin')->group(fu
     Route::get('/detailSection/{section}', [SectionsController::class, 'detailSection'])
         ->name('detailSection');
 
+    Route::get('/createResult/{section}', [ResultsController::class, 'createResult'])
+         ->name('createResult');
+
+    Route::post('/storeResult/{section}', [ResultsController::class, 'storeResult'])
+         ->name('storeResult');
+
+    Route::get('/detailResult/{result}', [ResultsController::class, 'detailResult'])
+         ->name('detailResult');
+
+    Route::post('/updateResult/{result}', [SectionsController::class, 'updateResult'])
+         ->name('updateResult');
+
+    Route::get('/deleteResult/{result}', [QuestionsController::class, 'deleteResult'])
+         ->name('deleteResult');
+
     Route::get('/createQuestion/{section}', [QuestionsController::class, 'createQuestion'])
         ->name('createQuestion');
 
     Route::get('/detailQuestion/{question}', [QuestionsController::class, 'detailQuestion'])
         ->name('detailQuestion');
 
+    Route::get('/editQuestion/{question}', [QuestionsController::class, 'editQuestion'])
+         ->name('editQuestion');
+
+    Route::post('/updateQuestion/{question}', [QuestionsController::class, 'updateQuestion'])
+         ->name('updateQuestion');
+
     Route::post('/storeQuestion/{section}', [QuestionsController::class, 'storeQuestion'])
         ->name('storeQuestion');
+
     Route::post('/deleteQuestion/{id}', [QuestionsController::class, 'deleteQuestion'])
         ->name('deleteQuestion');
 });

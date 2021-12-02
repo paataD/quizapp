@@ -8,8 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Answer extends Model
 {
     use HasFactory;
-    protected $guarded = [];
 
+    protected $fillable = ['answer', 'is_checked', 'score'];
     public function question()
     {
         return $this->belongsTo(Queston::class);

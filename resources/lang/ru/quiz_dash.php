@@ -5,14 +5,29 @@ return [
 
     'Create' => 'Создать',
     'Question' => 'Вопрос',
-    'Explanation' => 'Объяснение',
     'Is this question active?' => 'Вопрос включен?',
 
-    'Delete Question' => 'Назад',
+    'Delete Question' => 'Удалить вопрос',
     'Back' => 'Назад',
     'Yes' => 'Да',
     'No' => 'Нет',
 
     'Answer' => '',
-    'Choice' => ''
+    'Choice' => '',
+
+    'Take a New Quiz' => 'Пройти новый тест',
+    'Users' => 'Пользователи',
+    'Average Score:' => 'Средний результат',
+
+    'Quiz Detail' => 'Информация о тестировании',
+    'Quiz Title' => 'Название теста',
+    'Quiz Duration' => 'Продолжительность теста',
+    'Quiz Information' => 'Информация о тестировании',
+    'Not Completed' => 'Не завершен',
+    'Total Quiz Questions' => 'Всего вопросов в тесте',
+    'You took this quiz' => 'Вы проходили этот квест',
+    'Explanation' => 'Объяснение',
+    'Completed' => 'Завершен',
+    'Correct Answer' => 'Правильный ответ',
+    'Quiz Score' => 'Результат тестирования'
 ];
