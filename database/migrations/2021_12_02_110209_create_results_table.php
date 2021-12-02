@@ -15,6 +15,12 @@ class CreateResultsTable extends Migration
     {
         Schema::create('results', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('section_id')->constrained()->onDelete('cascade');
+            $table->string('point_start');
+            $table->string('point_start');
+            $table->string('name');
+            $table->string('point_end');
+            $table->longText('description');
             $table->timestamps();
         });
     }
