@@ -7,20 +7,20 @@
     <div class="max-w-7xl m-4 mx-auto sm:px-6 lg:px-8">
         <div class="bg-white mt-4 overflow-hidden shadow-xl sm:rounded-lg">
             <div class="mx-auto bg-green-200">
-                <h2 class="text-2xl font-bold card bg-green-600 p-4 text-gray-100 rounded-t-lg mx-auto">New Question</h2>
+                <h2 class="text-2xl font-bold card bg-green-600 p-4 text-gray-100 rounded-t-lg mx-auto">11</h2>
                 <div class="mt-2 max-w-auto mx-auto card p-4 bg-white rounded-b-lg shadow-md">
                     <div class="grid grid-cols-1 gap-6">
                         <form action="{{route('storeQuestion', $section)}}" method="post">
                             @csrf
                             <label class="block">
-                                <span class="text-gray-700">Question</span>
+                                <span class="text-gray-700">{{ __('quiz_dash.Question') }}</span>
                                 @error('question')
                                 <span class="text-red-700 text-xs content-end float-right">{{$message}}</span>
                                 @enderror
                                 <input name="question" value="{{ old('question') }}" type="text" class="mt-1 block w-full text-xs  bg-gray-200 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0" />
                             </label>
                             <label class="block">
-                                <span class="text-gray-700">Explanation</span>
+                                <span class="text-gray-700">{{ __('quiz_dash.Explanation') }}</span>
                                 @error('explanation')
                                 <span class="text-red-700 text-xs content-end float-right">{{$message}}</span>
                                 @enderror
@@ -32,8 +32,8 @@
                                 <span class="text-red-700 text-xs content-end float-right">{{$message}}</span>
                                 @enderror
                                 <select name="is_active" value="{{ old('is_active') }}" class="block w-1/2 mt-1 text-xs  bg-gray-200 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0">
-                                    <option value="1">Yes</option>
-                                    <option value="0">No</option>
+                                    <option value="1">{{ __('quiz_dash.Yes') }}</option>
+                                    <option value="0">{{ __('quiz_dash.No') }}</option>
                                 </select>
                             </label>
                             <div class="grid grid-cols-1 my-5 justify-center">
@@ -43,8 +43,11 @@
                                     @enderror
                                     <input type="hidden" value="0" name="answers[0][is_checked]">
                                     <input type="checkbox" value="1" name="answers[0][is_checked]">
-                                    <span class="min-w-full mx-auto px-5">
+                                    <span class="w-11/12 mx-auto px-5">
                                         <input name="answers[0][answer]" value="{{ old('answers.0.answer') }}" type="text" class="mt-1 text-xs block w-full bg-gray-200 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0" />
+                                    </span>
+                                    <span class="w-1/12 mx-auto px-5">
+                                        <input name="answers[1][answer]" value="{{ old('answers.1.answer') }}" type="text" class="mt-1 block w-full text-xs  bg-gray-200 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0" />
                                     </span>
                                 </label>
                                 <label class="flex items-center">
@@ -56,6 +59,9 @@
                                     <span class="min-w-full mx-auto px-5">
                                         <input name="answers[1][answer]" value="{{ old('answers.1.answer') }}" type="text" class="mt-1 block w-full text-xs  bg-gray-200 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0" />
                                     </span>
+                                    <span class="min-w-full mx-auto px-5">
+                                        <input name="answers[1][answer]" value="{{ old('answers.1.answer') }}" type="text" class="mt-1 block w-full text-xs  bg-gray-200 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0" />
+                                    </span>
                                 </label>
                                 <label class="flex items-center">
                                     @error('answers.0.answer')
@@ -63,9 +69,13 @@
                                     @enderror
                                     <input type="hidden" value="0" name="answers[2][is_checked]">
                                     <input type="checkbox" value="1" name="answers[2][is_checked]">
-                                    <span class="min-w-full mx-auto px-5">
-                                        <input name="answers[2][answer]" value="{{ old('answers.2.answer') }}" type="text" class="mt-1 block w-full text-xs  bg-gray-200 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0" />
+                                    <span class="px-5 w-11/12">
+                                        <input name="answers[2][answer]" value="{{ old('answers.2.answer') }}" type="text" class=" mt-1 block w-full text-xs  bg-gray-200 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0" />
+</span>
+                                    <span class="w-11/12">
+                                        <input name="answers[2][score]" value="{{ old('answers.2.score') }}" type="text" class="mt-1 block w-full text-xs  bg-gray-200 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0" />
                                     </span>
+
                                 </label>
                                 <label class="flex items-center">
                                     @error('answers.0.answer')
@@ -79,9 +89,9 @@
                                 </label>
                             </div>
                             <div class="flex items-center justify-end mt-4">
-                                <a href="{{route('adminhome')}}" class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent text-xs  font-semibold text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring focus:ring-gray-300 disabled:opacity-25 transition">Back</a>
+                                <a href="{{route('adminhome')}}" class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent text-xs  font-semibold text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring focus:ring-gray-300 disabled:opacity-25 transition">{{ __('quiz_dash.Back') }}</a>
                                 <x-jet-button type="submit" class="ml-4">
-                                    {{ __('Create') }}
+                                    {{ __('quiz_dash.Create') }}
                                 </x-jet-button>
                             </div>
                         </form>

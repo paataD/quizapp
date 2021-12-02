@@ -30,7 +30,7 @@ class QuestionsController extends Controller
             'question' => ['required', Rule::unique('questions')],
             'explanation' => 'required',
             'is_active' => 'required',
-            'answers.*.answer' => 'required',
+            'answers.0.answer' => 'required',
             'answers.*.is_checked' => 'present'
         ]);
 

@@ -4,17 +4,23 @@ namespace App\Http\Livewire;
 
 use App\Models\Quiz;
 use App\Models\Quote;
+use App\Models\Role;
 use App\Models\Section;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 use App\Models\Question;
 use App\Models\QuizHeader;
 
-class UserQuizlv extends Component
+class AnonQuizlv extends Component
 {
     public $quote;
     public $quizid;
     public $sections;
     public $count = 0;
+    public $name;
+    public $email;
+    public $phone;
     public $sectionId;
     public $quizSize = 1;
     public $quizPecentage;
@@ -31,39 +37,19 @@ class UserQuizlv extends Component
 
     protected $rules = [
         'sectionId' => 'required',
-        'quizSize' => 'required|numeric',
+        'name' => 'required',
+        'email' => 'required',
+        'phone' => 'required',
+       /* 'quizSize' => 'required|numeric',*/
     ];
 
 
-    public function showResults()
+    public function mount()
     {
-        // Get a count of total number of quiz questions in Quiz table for the just finisned quiz.
-        $this->totalQuizQuestions = Quiz::where('quiz_header_id', $this->quizid->id)->count();
-
-        // Get a count of correctly answered questions for this quiz.
-        $this->currectQuizAnswers = Quiz::where('quiz_header_id', $this->quizid->id)
-            ->where('is_correct', '1')
-            ->count();
-
-        // Caclculate score for upding the quiz_header table before finishing the quid.
-        $this->quizPecentage = round(($this->currectQuizAnswers / $this->totalQuizQuestions) * 100, 2);
-
-        // Push all the question ids to quiz_header table to retreve them while displaying the quiz details
-        $this->quizid->questions_taken = serialize($this->answeredQuestions);
-
-        // Update the status of quiz as completed, this is used to resuming any uncompleted/abondened quizzes
-        $this->quizid->completed = true;
-
-        // Insert the quiz score to quiz_header table
-        $this->quizid->score = $this->quizPecentage;
-
-        // Save the udpates.
-        $this->quizid->save();
-
-        // Hide quiz div and show result div wrapped in if statements in the blade template.
-        $this->quizInProgress = false;
-        $this->showResult = true;
+        $this->quote = Quote::inRandomOrder()->first();
     }
+
+
     public function render()
     {
         $this->sections = Section::withcount('questions')->where('is_active', '1')
@@ -82,11 +68,46 @@ class UserQuizlv extends Component
         }
     }
 
-    public function mount()
+    public function startQuiz()
     {
-        $this->quote = Quote::inRandomOrder()->first();
-    }
 
+        // Create a new quiz header in quiz_headers table and populate initial quiz information
+        // Keep the instance in $this->quizid veriable for later updates to quiz.
+        $this->validate();
+        if(!auth()->user()){
+            $userRole = Role::where( 'name', '=', 'user' )->first();
+            $user = User::firstOrCreate(
+                [
+                    'phone' =>  $this->phone,
+                    'email' =>$this->email
+                ],
+                [
+                    'name' => $this->name,
+                    'password' => bcrypt(rand(2,7))
+                ]
+            );
+
+            if($user->wasRecentlyCreated){
+                $user->roles()->attach($userRole);
+                Auth::login($user);
+            } else {
+                return 'вы уже зарегистрированы на сайте';
+            }
+
+        }
+
+        $this->quizid = QuizHeader::create([
+            'user_id' => $user->id,
+            /* 'quiz_size' => $this->quizSize,*/
+            'section_id' => $this->sectionId,
+        ]);
+        $this->count = 1;
+        // Get the first/next question for the quiz.
+        // Since we are using LiveWire component for quiz, the first quesiton and answers will be displayed through mount function.
+        $this->currentQuestion = $this->getNextQuestion();
+        $this->setupQuiz = false;
+        $this->quizInProgress = true;
+    }
     public function getNextQuestion()
     {
         //Return a random question from the section selected by the user for quiz.
@@ -120,24 +141,7 @@ class UserQuizlv extends Component
         return $question;
     }
 
-    public function startQuiz()
-    {
 
-        // Create a new quiz header in quiz_headers table and populate initial quiz information
-        // Keep the instance in $this->quizid veriable for later updates to quiz.
-        $this->validate();
-        $this->quizid = QuizHeader::create([
-            'user_id' => auth()->id(),
-            'quiz_size' => $this->quizSize,
-            'section_id' => $this->sectionId,
-        ]);
-        $this->count = 1;
-        // Get the first/next question for the quiz.
-        // Since we are using LiveWire component for quiz, the first quesiton and answers will be displayed through mount function.
-        $this->currentQuestion = $this->getNextQuestion();
-        $this->setupQuiz = false;
-        $this->quizInProgress = true;
-    }
 
     public function nextQuestion()
     {
@@ -176,5 +180,34 @@ class UserQuizlv extends Component
 
         // Get a random questoin
         $this->currentQuestion = $this->getNextQuestion();
+    }
+    public function showResults()
+    {
+        // Get a count of total number of quiz questions in Quiz table for the just finisned quiz.
+        $this->totalQuizQuestions = Quiz::where('quiz_header_id', $this->quizid->id)->count();
+
+        // Get a count of correctly answered questions for this quiz.
+        $this->currectQuizAnswers = Quiz::where('quiz_header_id', $this->quizid->id)
+            ->where('is_correct', '1')
+            ->count();
+
+        // Caclculate score for upding the quiz_header table before finishing the quid.
+        $this->quizPecentage = round(($this->currectQuizAnswers / $this->totalQuizQuestions) * 100, 2);
+
+        // Push all the question ids to quiz_header table to retreve them while displaying the quiz details
+        $this->quizid->questions_taken = serialize($this->answeredQuestions);
+
+        // Update the status of quiz as completed, this is used to resuming any uncompleted/abondened quizzes
+        $this->quizid->completed = true;
+
+        // Insert the quiz score to quiz_header table
+        $this->quizid->score = $this->quizPecentage;
+
+        // Save the udpates.
+        $this->quizid->save();
+
+        // Hide quiz div and show result div wrapped in if statements in the blade template.
+        $this->quizInProgress = false;
+        $this->showResult = true;
     }
 }

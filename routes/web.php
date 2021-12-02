@@ -18,9 +18,8 @@ use App\Http\Controllers\QuestionsController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('welcome');
+Route::get('/', [\App\Http\Controllers\QuizController::class, 'index'])->name('welcome');
+Route::get('/quiz/{id}', [\App\Http\Controllers\QuizController::class, 'index']);
 
 Route::middleware(['auth', 'verified', 'role:admin'])->prefix('admin')->group(function () {
 
@@ -74,6 +73,7 @@ Route::middleware(['auth', 'verified', 'role:admin|user'])->prefix('appuser')->g
     Route::post('/deleteUserQuiz/{id}', [AppUserController::class, 'deleteUserQuiz'])
         ->name('deleteUserQuiz');
 
-    Route::get('/startQuiz', [AppUserController::class, 'startQuiz'])
-        ->name('startQuiz');
+
 });
+Route::get('/startQuiz', [AppUserController::class, 'startQuiz'])
+    ->name('startQuiz');

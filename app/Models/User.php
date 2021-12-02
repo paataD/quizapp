@@ -29,6 +29,7 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'email',
+        'phone',
         'password',
     ];
 
@@ -76,6 +77,8 @@ class User extends Authenticatable
     {
         return $this->hasMany(QuizHeader::class);
     }
+
+
 
     public static function search($search)
     {
