@@ -13,8 +13,8 @@ class Result extends Model
     protected $fillable = [
         'name',
         'description',
-        'point_start',
-        'point_end',
+        'points_start',
+        'points_end',
         'details'
     ];
 

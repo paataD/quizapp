@@ -31,7 +31,7 @@
                                 @error('point_start')
                                     <span class="text-red-700 text-xs content-end float-right">{{$message}}</span>
                                 @enderror
-                                <input name="point_start" value="{{old('points_start')}}" type="number" class="mt-1 block w-full rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0" />
+                                <input name="points_start" value="{{old('points_start')}}" type="number" class="mt-1 block w-full rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0" />
                             </label>
 
                             <label class="block">
@@ -39,11 +39,11 @@
                                 @error('point_end')
                                     <span class="text-red-700 text-xs content-end float-right">{{$message}}</span>
                                 @enderror
-                                <input name="point_start" value="{{old('points_end')}}" type="number" class="mt-1 block w-full rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0" />
+                                <input name="points_end" value="{{old('points_end')}}" type="number" class="mt-1 block w-full rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0" />
                             </label>
 
                             <div class="flex items-center justify-end mt-4">
-                                <a href="{{route('listSection')}}" class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring focus:ring-gray-300 disabled:opacity-25 transition">Back</a>
+                                <a href="{{route('listSection')}}" class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring focus:ring-gray-300 disabled:opacity-25 transition">{{ __('quiz_dash.Back') }}</a>
 
                                 <x-jet-button type="submit" class="ml-4">
                                     {{ __('Create') }}

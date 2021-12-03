@@ -22,11 +22,8 @@ class ResultsController extends Controller
 
     public function storeResult(Section $section, Request $request)
     {
-
-
         $data = $request->all();
-
-        auth()->user()->sections()->createMany($data);
+        $section->results()->create($data);
         return redirect()->route('listSection')->with('success', 'Section created successfully!');
     }
 

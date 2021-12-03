@@ -22,7 +22,7 @@ class AnonQuizlv extends Component
     public $email;
     public $phone;
     public $sectionId;
-    public $quizSize = 1;
+    public $quizSize;
     public $quizPecentage;
     public $currentQuestion;
     public $setupQuiz = true;
@@ -70,7 +70,6 @@ class AnonQuizlv extends Component
 
     public function startQuiz()
     {
-
         // Create a new quiz header in quiz_headers table and populate initial quiz information
         // Keep the instance in $this->quizid veriable for later updates to quiz.
         $this->validate();
@@ -102,6 +101,8 @@ class AnonQuizlv extends Component
             'section_id' => $this->sectionId,
         ]);
         $this->count = 1;
+
+        $this->quizSize = Question::where('section_id', $this->sectionId)->count();
         // Get the first/next question for the quiz.
         // Since we are using LiveWire component for quiz, the first quesiton and answers will be displayed through mount function.
         $this->currentQuestion = $this->getNextQuestion();

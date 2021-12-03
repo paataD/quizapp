@@ -10,8 +10,9 @@ class Answer extends Model
     use HasFactory;
 
     protected $fillable = ['answer', 'is_checked', 'score'];
+
     public function question()
     {
-        return $this->belongsTo(Queston::class);
+        return $this->belongsTo(Question::class);
     }
 }

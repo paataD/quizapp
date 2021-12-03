@@ -2,7 +2,7 @@
     <x-slot name="header">
         <div class="md:flex justify-between">
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                {{ __('Section Details') }}
+                {{ __('quiz_dash.Quiz Details') }}
             </h2>
         </div>
     </x-slot>
@@ -11,7 +11,7 @@
             <div class="mx-auto">
                 <div class="flex justify-between items-center py-4">
                     <a href="{{route('createQuestion',$section->id)}}" class="tracking-wide font-bold rounded border-2 border-blue-500 hover:border-blue-500 bg-blue-500 text-white hover:bg-blue-600 transition shadow-md py-2 px-6 items-center">Create a Question</a>
-                    <a href="{{route('listSection')}}" class="tracking-wide font-bold rounded border-2 border-blue-500 hover:border-blue-500 bg-blue-500 text-white hover:bg-blue-600 transition shadow-md py-2 px-6 items-center">Back</a>
+                    <a href="{{route('listSection')}}" class="tracking-wide font-bold rounded border-2 border-blue-500 hover:border-blue-500 bg-blue-500 text-white hover:bg-blue-600 transition shadow-md py-2 px-6 items-center">{{ __('quiz_dash.Back') }}</a>
                 </div>
                 <!-- --------------------- START NEW TABLE --------------------->
 
@@ -116,8 +116,10 @@
                             No Results under this section are found!
                         </h1>
                         <p class="mt-1 max-w-2xl text-sm text-gray-500">
-                            Create some Results, they will appear here!
+                            Create some Results, they will appear here! <br>
+                            <a href="{{route('createResult',$section->id)}}" class="tracking-wide font-bold rounded border-2 border-blue-500 hover:border-blue-500 bg-blue-500 text-white hover:bg-green-600 transition shadow-md py-2 px-6 items-center">{{ __('quiz_dash.Add Result') }}</a>
                         </p>
+
                     </div>
                 @else
                     <div class="flex flex-col">

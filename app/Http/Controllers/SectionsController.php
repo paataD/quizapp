@@ -52,8 +52,8 @@ class SectionsController extends Controller
 
     public function detailSection(Section $section)
     {
-        $section = $section->with('results')->first();
-        $questions = $section->questions()->paginate(10);
+        $section = Section::with('results')->where('id',$section->id)->first();
+        $questions = $section->questions()->paginate(30);
         return view('admins.detail_sections', compact('questions', 'section'));
     }
 

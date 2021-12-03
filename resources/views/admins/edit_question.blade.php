@@ -39,16 +39,20 @@
                             <div class="grid grid-cols-1 my-5 justify-center">
 
                                 @foreach($answers as $answer)
-                                    <label class="flex items-center">
-                                        <input type="checkbox" name="answers[{{$answer->id}}][is_checked]" {{ ($answer->is_checked == 1 )? ' checked' : ''}}>
+                                    <div class="flex items-center">
+                                        <input type="hidden" value="0" name="answers[{{$answer->id}}][is_checked]">
+
+                                        <input type="checkbox" value="1" name="answers[{{$answer->id}}][is_checked]" {{ ($answer->is_checked == 1 )? ' checked' : ''}}>
                                         <span class="w-10/12 px-5">
                                             <input name="answers[{{$answer->id}}][answer]" value="{{ old('answers.0.answer', $answer->answer) }}" type="text" class="mt-1 text-xs block w-full bg-gray-200 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0" />
                                         </span>
                                         <span class="w-2/12">
                                             <input name="answers[{{$answer->id}}][score]" value="{{ old('answers.0.answer', $answer->score) }}" type="number" class="mt-1 block w-full text-xs  bg-gray-200 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0" />
                                         </span>
-                                    </label>
+                                    </div>
                                 @endforeach
+
+
 
                             </div>
                             <div class="flex items-center justify-end mt-4">

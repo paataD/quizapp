@@ -11,6 +11,9 @@ return [
     'Back' => 'Назад',
     'Yes' => 'Да',
     'No' => 'Нет',
+    'Update' => 'Обновить',
+    'Create a Question' => 'Новый Воспрос',
+
 
     'Answer' => '',
     'Choice' => '',

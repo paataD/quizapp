@@ -28,6 +28,7 @@ class QuestionsController extends Controller
     public function editQuestion(Question $question)
     {
         $answers = $question->answers()->get();
+
         return view('admins.edit_question', compact('question', 'answers'));
     }
 
