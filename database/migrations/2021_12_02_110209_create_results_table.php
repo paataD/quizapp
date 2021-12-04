@@ -19,7 +19,7 @@ class CreateResultsTable extends Migration
             $table->string('name');
             $table->integer('points_start');
             $table->integer('points_end');
-            $table->longText('description');
+            $table->longText('description')->nullable();
             $table->timestamps();
         });
     }
