@@ -21,6 +21,7 @@ class CreateQuizzesTable extends Migration
             $table->foreignId('question_id')->constrained()->onDelete('cascade');
             $table->foreignId('answer_id')->constrained()->onDelete('cascade');
             $table->enum('is_correct', [0, 1])->default(0);
+            $table->integer('score')->nullable();
             $table->timestamps();
         });
     }
