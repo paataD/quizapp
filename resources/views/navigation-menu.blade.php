@@ -14,12 +14,12 @@
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     @hasrole('admin')
                     <x-jet-nav-link href="{{ route('adminhome') }}" :active="request()->routeIs('adminhome')">
-                        {{ __('Admin Home') }}
+                        {{ __('quiz_dash.Control Panel') }}
                     </x-jet-nav-link>
                     @endhasrole
                     @hasrole('user|admin|superadmin')
                     <x-jet-nav-link href="{{ route('startQuiz') }}" :active="request()->routeIs('startQuiz')">
-                        {{ __('Take Quiz') }}
+                        {{ __('quiz.Take Quiz') }}
                     </x-jet-nav-link>
                     <x-jet-nav-link href="{{ route('userQuizHome') }}" :active="request()->routeIs('userQuizHome')">
                         {{ __('User Quiz Home') }}
@@ -149,12 +149,12 @@
         <div class="pt-2 pb-3 space-y-1">
             @hasrole('admin')
             <x-jet-responsive-nav-link href="{{ route('adminhome') }}" :active="request()->routeIs('adminhome')">
-                {{ __('Admin Home') }}
+                {{ __('quiz_dash.Control Panel') }}
             </x-jet-responsive-nav-link>
             @endhasrole
             @hasrole('user|admin|superadmin')
             <x-jet-responsive-nav-link href="{{ route('startQuiz') }}" :active="request()->routeIs('startQuiz')">
-                {{ __('Take Quiz') }}
+                {{ __('quiz.Take Quiz') }}
             </x-jet-responsive-nav-link>
             <x-jet-responsive-nav-link href="{{ route('userQuizHome') }}" :active="request()->routeIs('userQuizHome')">
                 {{ __('User Quiz Home') }}

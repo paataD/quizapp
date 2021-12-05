@@ -20,7 +20,7 @@ class EnglishLevelTest extends Seeder
 
         $quiz = [
             'name' => 'English Level test',
-            'is_active' => 1,
+            'is_active' => '1',
             'user_id' => 1
         ];
         $results = [
@@ -60,7 +60,7 @@ class EnglishLevelTest extends Seeder
                     ],
                     [
                         'answer' => 'Do',
-                        'is_checked' => 1,
+                        'is_checked' => '1',
                         'score' => 1
                     ],
                 ]
@@ -70,7 +70,7 @@ class EnglishLevelTest extends Seeder
                 'answers'=>[
                     [
                         'answer' => 'on',
-                        'is_checked' => 1,
+                        'is_checked' => '1',
                         'score' => 1
                     ],
                     [
@@ -86,7 +86,7 @@ class EnglishLevelTest extends Seeder
                 'answers'=>[
                     [
                         'answer' => 'at',
-                        'is_checked' => 1,
+                        'is_checked' => '1',
                         'score' => 1
                     ],
                     [
@@ -105,7 +105,7 @@ class EnglishLevelTest extends Seeder
                     ],
                     [
                         'answer' => 'at',
-                        'is_checked' => 1,
+                        'is_checked' => '1',
                         'score' => 2
                     ],
                     [
@@ -118,7 +118,7 @@ class EnglishLevelTest extends Seeder
                 'answers'=>[
                     [
                         'answer' => 'When are you free?',
-                        'is_checked' => 1,
+                        'is_checked' => '1',
                         'score' => 1
                     ],
                     [
@@ -142,7 +142,7 @@ class EnglishLevelTest extends Seeder
                     ],
                     [
                         'answer' => 'How long for?',
-                        'is_checked' => 1,
+                        'is_checked' => '1',
                         'score' => 2
                     ],
                 ]
@@ -152,7 +152,7 @@ class EnglishLevelTest extends Seeder
                 'answers'=>[
                     [
                         'answer' => 'in the evenings',
-                        'is_checked' => 1,
+                        'is_checked' => '1',
                         'score' => 2
                     ],
                     [
@@ -172,7 +172,7 @@ class EnglishLevelTest extends Seeder
                     ],
                     [
                         'answer' => 'Have you got anything else?',
-                        'is_checked' => 1,
+                        'is_checked' => '1',
                         'score' => 3
                     ],
                     [
@@ -195,7 +195,7 @@ class EnglishLevelTest extends Seeder
                     ],
                     [
                         'answer' => 'interested',
-                        'is_checked' => 1,
+                        'is_checked' => '1',
                         'score' => 2
                     ],
                 ]
@@ -205,7 +205,7 @@ class EnglishLevelTest extends Seeder
                 'answers'=>[
                     [
                         'answer' => 'Tom isn\'t here yet',
-                        'is_checked' => 1,
+                        'is_checked' => '1',
                         'score' => 3
                     ],
                     [
@@ -224,7 +224,7 @@ class EnglishLevelTest extends Seeder
                     ],
                     [
                         'answer' => 'falling',
-                        'is_checked' => 1,
+                        'is_checked' => '1',
                         'score' => 3
                     ],
                     [
@@ -243,7 +243,7 @@ class EnglishLevelTest extends Seeder
                     ],
                     [
                         'answer' => 'must',
-                        'is_checked' => 1,
+                        'is_checked' => '1',
                         'score' => 3
                     ],
                     [
@@ -265,7 +265,7 @@ class EnglishLevelTest extends Seeder
                     ],
                     [
                         'answer' => 'lose',
-                        'is_checked' => 1,
+                        'is_checked' => '1',
                         'score' => 3
                     ],
                     [
@@ -278,7 +278,7 @@ class EnglishLevelTest extends Seeder
                 'answers'=>[
                     [
                         'answer' => 'information',
-                        'is_checked' => 1,
+                        'is_checked' => '1',
                         'score' => 2
                     ],
                     [
@@ -309,7 +309,7 @@ class EnglishLevelTest extends Seeder
                     ],
                     [
                         'answer' => 'way',
-                        'is_checked' => 1,
+                        'is_checked' => '1',
                         'score' => 3
                     ],
                 ]
@@ -323,7 +323,7 @@ class EnglishLevelTest extends Seeder
                     ],
                     [
                         'answer' => 'making',
-                        'is_checked' => 1,
+                        'is_checked' => '1',
                         'score' => 3
                     ],
                     [
@@ -351,7 +351,7 @@ class EnglishLevelTest extends Seeder
                     ],
                     [
                         'answer' => 'attitude',
-                        'is_checked' => 1,
+                        'is_checked' => '1',
                         'score' => 4
                     ],
                 ]
@@ -366,7 +366,7 @@ class EnglishLevelTest extends Seeder
                     ],
                     [
                         'answer' => 'has had',
-                        'is_checked' => 1,
+                        'is_checked' => '1',
                         'score' => 3
                     ],
                     [
@@ -383,7 +383,7 @@ class EnglishLevelTest extends Seeder
                 'answers'=>[
                     [
                         'answer' => 'between',
-                        'is_checked' => 1,
+                        'is_checked' => '1',
                         'score' => 3
                     ],
                     [
@@ -405,7 +405,7 @@ class EnglishLevelTest extends Seeder
                     ],
                     [
                         'answer' => 'as usual',
-                        'is_checked' => 1,
+                        'is_checked' => '1',
                         'score' => 3
                     ],
                     [
@@ -424,7 +424,7 @@ class EnglishLevelTest extends Seeder
                     ],
                     [
                         'answer' => 'Provided',
-                        'is_checked' => 1,
+                        'is_checked' => '1',
                         'score' => 4
                     ],
                     [
@@ -446,7 +446,7 @@ class EnglishLevelTest extends Seeder
                     ],
                     [
                         'answer' => 'supply',
-                        'is_checked' => 1,
+                        'is_checked' => '1',
                         'score' => 4
                     ],
                     [
@@ -468,7 +468,7 @@ class EnglishLevelTest extends Seeder
                     ],
                     [
                         'answer' => 'set',
-                        'is_checked' => 1,
+                        'is_checked' => '1',
                         'score' => 4
                     ],
                 ]
@@ -481,7 +481,7 @@ class EnglishLevelTest extends Seeder
                     ],
                     [
                         'answer' => 'handy',
-                        'is_checked' => 1,
+                        'is_checked' => '1',
                         'score' => 4
                     ],
                     [
@@ -501,7 +501,7 @@ class EnglishLevelTest extends Seeder
                     ],
                     [
                         'answer' => 'arriving',
-                        'is_checked' => 1,
+                        'is_checked' => '1',
                         'score' => 3
                     ],
                     [
@@ -521,7 +521,7 @@ class EnglishLevelTest extends Seeder
                     ],
                     [
                         'answer' => 'fancy',
-                        'is_checked' => 1,
+                        'is_checked' => '1',
                         'score' => 3
                     ],
                     [
@@ -538,7 +538,7 @@ class EnglishLevelTest extends Seeder
                 'answers'=>[
                     [
                         'answer' => 'engage',
-                        'is_checked' => 1,
+                        'is_checked' => '1',
                         'score' => 4
                     ],
                     [
@@ -562,7 +562,7 @@ class EnglishLevelTest extends Seeder
                     ],
                     [
                         'answer' => 'offence',
-                        'is_checked' => 1,
+                        'is_checked' => '1',
                         'score' => 4
                     ],
                     [
@@ -583,7 +583,7 @@ class EnglishLevelTest extends Seeder
                     ],
                     [
                         'answer' => 'prepared',
-                        'is_checked' => 1,
+                        'is_checked' => '1',
                         'score' => 3
                     ],
                     [
@@ -599,7 +599,7 @@ class EnglishLevelTest extends Seeder
                 'answers'=>[
                     [
                         'answer' => 'supply',
-                        'is_checked' => 1,
+                        'is_checked' => '1',
                         'score' => 4
                     ],
                     [
@@ -618,7 +618,7 @@ class EnglishLevelTest extends Seeder
                 'answers'=>[
                     [
                         'answer' => 'neither do I',
-                        'is_checked' => 1,
+                        'is_checked' => '1',
                         'score' => 3
                     ],
                     [
@@ -643,7 +643,7 @@ class EnglishLevelTest extends Seeder
                     ],
                     [
                         'answer' => 'didn\'t she',
-                        'is_checked' => 1,
+                        'is_checked' => '1',
                         'score' => 3
                     ],
                     [
@@ -665,7 +665,7 @@ class EnglishLevelTest extends Seeder
                     ],
                     [
                         'answer' => 'wouldn\'t have',
-                        'is_checked' => 1,
+                        'is_checked' => '1',
                         'score' => 3
                     ],
                 ]
@@ -675,7 +675,7 @@ class EnglishLevelTest extends Seeder
                 'answers'=>[
                     [
                         'answer' => 'lending',
-                        'is_checked' => 1,
+                        'is_checked' => '1',
                         'score' => 3
                     ],
                     [
@@ -701,7 +701,7 @@ class EnglishLevelTest extends Seeder
                     ],
                     [
                         'answer' => 'profit',
-                        'is_checked' => 1,
+                        'is_checked' => '1',
                         'score' => 3
                     ],
                     [
@@ -718,7 +718,7 @@ class EnglishLevelTest extends Seeder
         foreach ( $questions as $question ) {
             $questionArr = [
                 'question' => $question['question'],
-                'is_active' => 1,
+                'is_active' => '1',
                 'section_id' => $quiz->id
                 ];
          $newQuestion =  Question::create($questionArr);

@@ -8,7 +8,10 @@ return [
     'Quiz Status' => 'Статус квеста',
     'Dear' => 'Уважаемый',
 
+    'User'=> 'Пользователь',
+
     'Sections' => 'Уважаемый',
 
-    'Questions' => 'Вопросы'
+    'Questions' => 'Вопросы',
+    'Take Quiz' => 'Пройти тест'
 ];

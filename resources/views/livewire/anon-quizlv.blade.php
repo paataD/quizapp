@@ -5,7 +5,7 @@
     <div class="px-4 -py-3 sm:px-6 ">
         <div class="flex max-w-auto justify-between">
             <h1 class="text-sm leading-6 font-medium text-gray-900">
-                <span class="text-gray-400 font-extrabold p-1">User</span>
+                <span class="text-gray-400 font-extrabold p-1">{{ __('quiz.User') }}</span>
                 <span class="font-bold p-2 leading-loose bg-blue-500 text-white rounded-lg">{{Auth::user()->name}}</span>
             </h1>
             <p class="mt-1 max-w-2xl text-sm text-gray-500">
@@ -35,7 +35,7 @@
                 @foreach($currentQuestion->answers as $answer)
                 <label for="question-{{$answer->id}}">
                     <div class="max-w-auto px-3 py-3 m-3 text-gray-800 rounded-lg border-2 border-gray-300 text-sm ">
-                        <span class="mr-2 font-extrabold"><input id="question-{{$answer->id}}" value="{{$answer->id .','.$answer->is_checked}}" wire:model="userAnswered" type="checkbox"> </span> {{$answer->answer}}
+                        <span class="mr-2 font-extrabold"><input id="question-{{$answer->id}}" value="{{$answer->id}}" wire:model="userAnswered" type="checkbox"> </span> {{$answer->answer}}
                     </div>
                 </label>
                 @endforeach
@@ -61,7 +61,7 @@
             <div class="container px-5 py-5 mx-auto">
                 <div class="text-center mb-5 justify-center">
                     <h1 class=" sm:text-3xl text-2xl font-medium text-center title-font text-gray-900 mb-4">Результаты теста</h1>
-                    <p class="text-md mt-10"> {{ __('quiz.Dear') }} <span class="font-extrabold text-blue-600 mr-2"> {{Auth::user()->name.'!'}} </span> You have secured <a class="bg-green-300 px-2 mx-2 hover:green-400 rounded-lg underline" href="{{route('userQuizDetails',$quizid) }}">Show quiz details</a></p>
+                    <p class="text-md mt-10"> {{ __('quiz.Dear') }} <span class="font-extrabold text-blue-600 mr-2"> {{Auth::user()->name.'!'}} </span>  <a class="bg-green-300 px-2 mx-2 hover:green-400 rounded-lg underline" href="{{route('userQuizDetails',$quizid) }}">{{ __('quiz_dash.Show quiz details') }}</a></p>
                     <progress class="text-base leading-relaxed xl:w-2/4 lg:w-3/4 mx-auto" id="quiz-{{$quizid}}" value="{{$quizPecentage}}" max="100"> {{$quizPecentage}} </progress> <span> {{$quizPecentage}}% </span>
                 </div>
                 <div class="flex flex-wrap lg:w-4/5 sm:mx-auto sm:mb-2 -mx-2">
@@ -71,7 +71,7 @@
                                 <path d="M22 11.08V12a10 10 0 11-5.93-9.14"></path>
                                 <path d="M22 4L12 14.01l-3-3"></path>
                             </svg>
-                            <span class="title-font font-medium mr-5 text-purple-700">{{ __('quiz.Correct Answers') }}</span><span class="title-font font-medium">{{$currectQuizAnswers}}</span>
+                            <span class="title-font font-medium mr-5 text-purple-700">{{ __('quiz.Correct Answers') }}</span><span class="title-font font-medium">{{$currectQuizAnswers}} | {{$quizPecentage.'%'}}</span>
                         </div>
                     </div>
                     <div class="p-2 sm:w-1/2 w-full">
@@ -83,16 +83,8 @@
                             <span class="title-font font-medium mr-5 text-purple-700">{{ __('quiz.Total Questions') }}</span><span class="title-font font-medium">{{$totalQuizQuestions}}</span>
                         </div>
                     </div>
-                    <div class="p-2 sm:w-1/2 w-full">
-                        <div class="bg-gray-100 rounded flex p-4 h-full items-center">
-                            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" class="text-indigo-500 w-6 h-6 flex-shrink-0 mr-4" viewBox="0 0 24 24">
-                                <path d="M22 11.08V12a10 10 0 11-5.93-9.14"></path>
-                                <path d="M22 4L12 14.01l-3-3"></path>
-                            </svg>
-                            <span class="title-font font-medium mr-5 text-purple-700">Percentage Scored</span><span class="title-font font-medium">{{$quizPecentage.'%'}}</span>
-                        </div>
-                    </div>
-                    <div class="p-2 sm:w-1/2 w-full">
+
+                    {{--<div class="p-2 sm:w-1/2 w-full">
                         <div class="bg-gray-100 rounded flex p-4 h-full items-center">
                             <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" class="text-indigo-500 w-6 h-6 flex-shrink-0 mr-4" viewBox="0 0 24 24">
                                 <path d="M22 11.08V12a10 10 0 11-5.93-9.14"></path>
@@ -100,11 +92,11 @@
                             </svg>
                             <span class="title-font font-medium mr-5 text-purple-700">{{ __('quiz.Quiz status') }}</span><span class="title-font font-medium">{{ $quizPecentage > 70 ? 'Pass' : 'Fail' }}</span>
                         </div>
-                    </div>
+                    </div>--}}
                 </div>
                 <div class="mx-auto min-w-full p-2 md:flex m-2 justify-between">
-                    <a href="{{route('userQuizDetails',$quizid) }}" class="text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">See Quizzes Details</a>
-                    <a href="{{route('userQuizHome')}}" class="text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">See All Your Quizzes</a>
+                    <a href="{{route('userQuizDetails',$quizid) }}" class="text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">{{ __('quiz_dash.See Quiz Details') }}</a>
+                    <a href="{{route('userQuizHome')}}" class="text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">{{ __('quiz_dash.See All Your Quizzes') }}</a>
                 </div>
             </div>
         </div>
@@ -117,7 +109,8 @@
             <div class="">
                 <form class="flex flex-wrap -m-4 w-full" wire:submit.prevent="startQuiz">
                     @csrf
-                <div class="p-4 md:w-1/2 w-full">
+                    @if (!Auth::check())
+                        <div class="p-4 md:w-1/2 w-full">
                     <h2 class="text-gray-900 text-lg font-medium title-font mb-5">Контакты</h2>
                     <label class="block">
                         <span class="text-gray-700">Имя</span>
@@ -135,6 +128,7 @@
                         @error('phone') <span class="text-red-400 text-xs">{{ $message }}</span> @enderror
                     </label>
                 </div>
+                    @endif
                 <div class="p-4 md:w-1/2 w-full">
 
                         <h2 class="text-gray-900 text-lg font-medium title-font mb-5">Пройти тест</h2>

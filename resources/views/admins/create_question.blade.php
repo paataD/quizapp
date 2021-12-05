@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Admin Home') }}
+            {{ __('quiz_dash.Control Panel') }}
         </h2>
     </x-slot>
     <div class="max-w-7xl m-4 mx-auto sm:px-6 lg:px-8">
@@ -37,56 +37,59 @@
                                 </select>
                             </label>
                             <div class="grid grid-cols-1 my-5 justify-center">
-                                <label class="flex items-center">
+                                <div class="flex items-center">
                                     @error('answers.0.answer')
                                     <span class="text-red-700 text-xs content-end float-right">{{$message}}</span>
                                     @enderror
                                     <input type="hidden" value="0" name="answers[0][is_checked]">
                                     <input type="checkbox" value="1" name="answers[0][is_checked]">
-                                    <span class="w-11/12 mx-auto px-5">
+                                    <span class="w-10/12 px-5">
                                         <input name="answers[0][answer]" value="{{ old('answers.0.answer') }}" type="text" class="mt-1 text-xs block w-full bg-gray-200 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0" />
                                     </span>
-                                    <span class="w-1/12 mx-auto px-5">
-                                        <input name="answers[1][answer]" value="{{ old('answers.1.answer') }}" type="text" class="mt-1 block w-full text-xs  bg-gray-200 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0" />
+                                    <span class="w-2/12">
+                                        <input name="answers[0][score]" value="{{ old('answers.0.answer') }}" type="text" class="mt-1 block w-full text-xs  bg-gray-200 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0" />
                                     </span>
-                                </label>
-                                <label class="flex items-center">
+                                </div>
+                                <div class="flex items-center">
                                     @error('answers.0.answer')
                                     <span class="text-red-700 text-xs content-end float-right">{{$message}}</span>
                                     @enderror
                                     <input type="hidden" value="0" name="answers[1][is_checked]">
                                     <input type="checkbox" value="1" name="answers[1][is_checked]">
-                                    <span class="min-w-full mx-auto px-5">
+                                    <span class="w-10/12 px-5">
                                         <input name="answers[1][answer]" value="{{ old('answers.1.answer') }}" type="text" class="mt-1 block w-full text-xs  bg-gray-200 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0" />
                                     </span>
-                                    <span class="min-w-full mx-auto px-5">
-                                        <input name="answers[1][answer]" value="{{ old('answers.1.answer') }}" type="text" class="mt-1 block w-full text-xs  bg-gray-200 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0" />
+                                    <span class="w-2/12">
+                                        <input name="answers[1][score]" value="{{ old('answers.1.score') }}" type="text" class="mt-1 block w-full text-xs  bg-gray-200 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0" />
                                     </span>
-                                </label>
-                                <label class="flex items-center">
+                                </div>
+                                <div class="flex items-center">
                                     @error('answers.0.answer')
                                     <span class="text-red-700 text-xs content-end float-right">{{$message}}</span>
                                     @enderror
                                     <input type="hidden" value="0" name="answers[2][is_checked]">
                                     <input type="checkbox" value="1" name="answers[2][is_checked]">
-                                    <span class="px-5 w-11/12">
+                                    <span class="w-10/12 px-5">
                                         <input name="answers[2][answer]" value="{{ old('answers.2.answer') }}" type="text" class=" mt-1 block w-full text-xs  bg-gray-200 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0" />
-</span>
-                                    <span class="w-11/12">
+                                    </span>
+                                    <span class="w-2/12">
                                         <input name="answers[2][score]" value="{{ old('answers.2.score') }}" type="text" class="mt-1 block w-full text-xs  bg-gray-200 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0" />
                                     </span>
 
-                                </label>
-                                <label class="flex items-center">
+                                </div>
+                                <div class="flex items-center">
                                     @error('answers.0.answer')
                                     <span class="text-red-700 text-xs content-end float-right">{{$message}}</span>
                                     @enderror
                                     <input type="hidden" value="0" name="answers[3][is_checked]">
                                     <input type="checkbox" value="1" name="answers[3][is_checked]">
-                                    <span class="min-w-full mx-auto px-5">
-                                        <input name="answers[3][answer]" value="{{ old('answers.3.answer') }}" type="text" class="mt-1 block w-full text-xs  bg-gray-200 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0" />
+                                    <span class="w-10/12 px-5">
+                                        <input name="answers[3][answer]" value="{{ old('answers.3.answer') }}" type="text" class=" mt-1 block w-full text-xs  bg-gray-200 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0" />
                                     </span>
-                                </label>
+                                    <span class="w-2/12">
+                                        <input name="answers[3][score]" value="{{ old('answers.3.score') }}" type="text" class="mt-1 block w-full text-xs  bg-gray-200 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0" />
+                                    </span>
+                                </div>
                             </div>
                             <div class="flex items-center justify-end mt-4">
                                 <a href="{{route('adminhome')}}" class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent text-xs  font-semibold text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring focus:ring-gray-300 disabled:opacity-25 transition">{{ __('quiz_dash.Back') }}</a>

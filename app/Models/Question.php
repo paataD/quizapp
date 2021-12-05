@@ -12,7 +12,9 @@ class Question extends Model
     protected $fillable = [
         'question',
         'explanation',
-        'is_active'
+        'is_active',
+        'section_id',
+
     ];
 
     public function section()

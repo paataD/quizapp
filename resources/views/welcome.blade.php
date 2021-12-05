@@ -32,10 +32,8 @@
         </div>
         @endif
 
-        <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
+        <div class="max-w-10xl mx-auto sm:px-6 lg:px-8">
            <div>
-
-                {{ $quizes }}
                <livewire:anon-quizlv />
            </div>
         </div>

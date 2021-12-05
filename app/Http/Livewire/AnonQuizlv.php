@@ -2,12 +2,14 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Answer;
 use App\Models\Quiz;
 use App\Models\Quote;
 use App\Models\Role;
 use App\Models\Section;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 use Livewire\Component;
 use App\Models\Question;
 use App\Models\QuizHeader;
@@ -31,6 +33,7 @@ class AnonQuizlv extends Component
     public $currectQuizAnswers;
     public $showResult = false;
     public $totalQuizQuestions;
+    public $currectQuizScore;
     public $learningMode = false;
     public $quizInProgress = false;
     public $answeredQuestions = [];
@@ -72,7 +75,7 @@ class AnonQuizlv extends Component
     {
         // Create a new quiz header in quiz_headers table and populate initial quiz information
         // Keep the instance in $this->quizid veriable for later updates to quiz.
-        $this->validate();
+       /* $this->validate();*/
         if(!auth()->user()){
             $userRole = Role::where( 'name', '=', 'user' )->first();
             $user = User::firstOrCreate(
@@ -93,16 +96,19 @@ class AnonQuizlv extends Component
                 return 'вы уже зарегистрированы на сайте';
             }
 
-        }
+        } else {
 
+            $user = Auth::user();
+        }
+        $this->quizSize = Question::where('section_id', $this->sectionId)->count();
         $this->quizid = QuizHeader::create([
             'user_id' => $user->id,
-            /* 'quiz_size' => $this->quizSize,*/
+            'quiz_size' => $this->quizSize,
             'section_id' => $this->sectionId,
         ]);
         $this->count = 1;
 
-        $this->quizSize = Question::where('section_id', $this->sectionId)->count();
+
         // Get the first/next question for the quiz.
         // Since we are using LiveWire component for quiz, the first quesiton and answers will be displayed through mount function.
         $this->currentQuestion = $this->getNextQuestion();
@@ -150,7 +156,10 @@ class AnonQuizlv extends Component
         $this->quizid->questions_taken = serialize($this->answeredQuestions);
 
         // Retrive the answer_id and value of answers clicked by the user and push them to Quiz table.
-        list($answerId, $isChoiceCorrect) = explode(',', $this->userAnswered[0]);
+        //list($answerId, $isChoiceCorrect) = explode(',', $this->userAnswered[0]);
+
+        $answer = Answer::find($this->userAnswered[0]);
+        Log::debug($this->userAnswered[0]);
 
         // Insert the current question_id, answer_id and whether it is correnct or wrong to quiz table.
         Quiz::create([
@@ -158,8 +167,9 @@ class AnonQuizlv extends Component
             'quiz_header_id' => $this->quizid->id,
             'section_id' => $this->currentQuestion->section_id,
             'question_id' => $this->currentQuestion->id,
-            'answer_id' => $answerId,
-            'is_correct' => $isChoiceCorrect
+            'answer_id' => $answer->id,
+            'score' => $answer->score,
+            'is_correct' => $answer->is_checked
         ]);
 
         // Save the record
@@ -191,6 +201,8 @@ class AnonQuizlv extends Component
         $this->currectQuizAnswers = Quiz::where('quiz_header_id', $this->quizid->id)
             ->where('is_correct', '1')
             ->count();
+        $this->currectQuizScore = Quiz::where('quiz_header_id', $this->quizid->id)
+                                      ->where('is_correct', '1')->sum('score');
 
         // Caclculate score for upding the quiz_header table before finishing the quid.
         $this->quizPecentage = round(($this->currectQuizAnswers / $this->totalQuizQuestions) * 100, 2);
@@ -202,8 +214,8 @@ class AnonQuizlv extends Component
         $this->quizid->completed = true;
 
         // Insert the quiz score to quiz_header table
-        $this->quizid->score = $this->quizPecentage;
-
+        $this->quizid->score = $this->currectQuizScore;
+        $this->quizid->quiz_perc = $this->quizPecentage;
         // Save the udpates.
         $this->quizid->save();
 

@@ -34,13 +34,10 @@ class QuestionsController extends Controller
 
     public function storeQuestion(Section $section, Request $request)
     {
-        $section = $section;
-        $data = $request->validate([
+
+        $request->validate([
             'question' => ['required', Rule::unique('questions')],
-            'explanation' => 'required',
             'is_active' => 'required',
-            'answers.0.answer' => 'required',
-            'answers.*.is_checked' => 'present'
         ]);
 
 
@@ -52,9 +49,10 @@ class QuestionsController extends Controller
             'section_id' => $section->id,
         ]);
 
-        $status = $question->answers()->createMany($data['answers'])->push();
+        ///Log::debug($data['answers']);
+        $question->answers()->createMany($request->answers);
         return redirect()->route('detailSection', $section->id)
-            ->withSuccess('Question created successfully');;
+            ->withSuccess('Question created successfully');
     }
 
 

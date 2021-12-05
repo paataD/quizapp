@@ -15,7 +15,7 @@
                 <p class="mt-1 max-w-2xl text-sm text-gray-700">
 
                     <!-- \Carbon\Carbon::isDayOff($userQuizDetails->updated_at) -->
-                    {{ __('You took this quiz') }} {{$userQuizDetails->updated_at->diffForHumans()}} <span class="text-bold bg-green-300 px-2 rounded-lg"> {{$userQuizDetails->updated_at}} </span>
+                    {{ __('quiz_dash.You took this quiz') }} {{$userQuizDetails->updated_at->diffForHumans()}} <span class="text-bold bg-green-300 px-2 rounded-lg"> {{$userQuizDetails->updated_at}} </span>
                 </p>
             </div>
             <div class="border-t border-gray-300">
