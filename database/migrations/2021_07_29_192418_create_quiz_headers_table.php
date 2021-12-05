@@ -20,7 +20,8 @@ class CreateQuizHeadersTable extends Migration
             $table->boolean('completed')->default(false);
             $table->unsignedInteger('quiz_size');
             $table->text('questions_taken')->nullable()->default(null);
-            $table->double('score', 2)->default(0);
+            $table->integer('score')->unsigned()->nullable();
+            $table->double('quiz_perc', 2)->default(0);
             $table->timestamps();
         });
     }
