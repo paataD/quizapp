@@ -1,4 +1,5 @@
 <x-app-layout>
+    <x-slot name="title">{{ __('quiz.quiz_result') . ' - ' . $userQuizDetails->section->name }}</x-slot>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('quiz_dash.Quiz Detail') }}
@@ -65,7 +66,7 @@
                             {{ __('quiz_dash.Quiz Duration') }}
                         </dt>
                         <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                            {{$userQuizDetails->updated_at->diffInMinutes($userQuizDetails->created_at) .' Minutes'}}
+                            {{$userQuizDetails->updated_at->diffInMinutes($userQuizDetails->created_at) .' '. __('quiz.min')}}
                         </dd>
                     </div>
                 </dl>

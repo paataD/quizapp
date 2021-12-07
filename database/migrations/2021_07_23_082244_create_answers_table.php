@@ -16,7 +16,7 @@ class CreateAnswersTable extends Migration
         Schema::create('answers', function (Blueprint $table) {
             $table->id();
             $table->string('answer');
-            $table->integer('score')->nullable();
+            $table->decimal('score')->nullable();
             $table->enum('is_checked', ['0', '1'])->default('0');
             $table->foreignId('question_id')->constrained()->onDelete('cascade');
             $table->timestamps();
@@ -30,6 +30,10 @@ class CreateAnswersTable extends Migration
      */
     public function down()
     {
+        Schema::table('answers', function (Blueprint $table) {
+            $table->dropForeign('answers_question_id_foreign');
+         //   $table->dropColumn('question_id');
+        });
         Schema::dropIfExists('answers');
     }
 }

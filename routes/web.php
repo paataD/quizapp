@@ -18,6 +18,10 @@ use App\Http\Controllers\QuestionsController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/mail-test', function (){
+   return \App\Models\Section::with('questions.answers')->where('id',7)->get();
+});
+
 
 Route::get('/', [\App\Http\Controllers\QuizController::class, 'index'])->name('welcome');
 Route::get('/quiz/{id}', [\App\Http\Controllers\QuizController::class, 'index']);

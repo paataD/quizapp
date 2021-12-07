@@ -3,75 +3,72 @@
 namespace Database\Seeders;
 
 use App\Models\Question;
-use App\Models\Quiz;
 use App\Models\Section;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
 
-class EnglishLevelTest extends Seeder
-{
+class EnglishLevelTest extends Seeder {
     /**
      * Run the database seeds.
      *
      * @return void
      */
-    public function run()
-    {
+    public function run() {
 
-        $quiz = [
-            'name' => 'English Level test',
+        $quiz      = [
+            'name'      => 'English Level test',
             'is_active' => '1',
-            'user_id' => 1
+            'user_id'   => 1,
+            'shuffle_quest_flg' => 1
         ];
-        $results = [
+        $results   = [
             [
                 'points_start' => 1,
-                'points_end' => 10,
-                'name' => 'Уровень ниже уровня Starter'
+                'points_end'   => 10,
+                'name'         => 'Уровень ниже уровня Starter'
             ],
             [
                 'points_start' => 11,
-                'points_end' => 32,
-                'name' => 'Уровень А1/Elementary'
+                'points_end'   => 32,
+                'name'         => 'Уровень А1/Elementary'
             ],
             [
                 'points_start' => 33,
-                'points_end' => 52,
-                'name' => 'Уровень  А2/Elementary+'
+                'points_end'   => 52,
+                'name'         => 'Уровень  А2/Elementary+'
             ],
             [
                 'points_start' => 53,
-                'points_end' => 90,
-                'name' => 'Уровень  B1/ Pre-Intermediate'
+                'points_end'   => 90,
+                'name'         => 'Уровень  B1/ Pre-Intermediate'
             ],
             [
                 'points_start' => 91,
-                'points_end' => 100,
-                'name' => 'Уровень  выше B1/Intermediate'
+                'points_end'   => 100,
+                'name'         => 'Уровень  выше B1/Intermediate'
             ]
         ];
         $questions = [
             [
                 'question' => '_________ you like chocolate?',
-                'answers'=>[
+                'answers'  => [
                     [
                         'answer' => 'Does',
 
                     ],
                     [
-                        'answer' => 'Do',
+                        'answer'     => 'Do',
                         'is_checked' => '1',
-                        'score' => 1
+                        'score'      => 1
                     ],
                 ]
             ],
             [
                 'question' => 'Did you go out _________ Friday evening?',
-                'answers'=>[
+                'answers'  => [
                     [
-                        'answer' => 'on',
+                        'answer'     => 'on',
                         'is_checked' => '1',
-                        'score' => 1
+                        'score'      => 1
                     ],
                     [
                         'answer' => 'it',
@@ -83,11 +80,11 @@ class EnglishLevelTest extends Seeder
             ],
             [
                 'question' => 'Are you going away _________ Easter.',
-                'answers'=>[
+                'answers'  => [
                     [
-                        'answer' => 'at',
+                        'answer'     => 'at',
                         'is_checked' => '1',
-                        'score' => 1
+                        'score'      => 1
                     ],
                     [
                         'answer' => 'in',
@@ -99,27 +96,27 @@ class EnglishLevelTest extends Seeder
             ],
             [
                 'question' => 'Craig buys things _________ flea markets.',
-                'answers'=>[
+                'answers'  => [
                     [
                         'answer' => 'in',
                     ],
                     [
-                        'answer' => 'at',
+                        'answer'     => 'at',
                         'is_checked' => '1',
-                        'score' => 2
+                        'score'      => 2
                     ],
                     [
                         'answer' => 'on',
                     ],
-                    ]
+                ]
             ],
             [
                 'question' => 'When can we meet again?',
-                'answers'=>[
+                'answers'  => [
                     [
-                        'answer' => 'When are you free?',
+                        'answer'     => 'When are you free?',
                         'is_checked' => '1',
-                        'score' => 1
+                        'score'      => 1
                     ],
                     [
                         'answer' => 'Can you help me?',
@@ -132,7 +129,7 @@ class EnglishLevelTest extends Seeder
             ],
             [
                 'question' => 'My aunt is going to stay with me.',
-                'answers'=>[
+                'answers'  => [
                     [
                         'answer' => 'How was it?',
                     ],
@@ -141,19 +138,19 @@ class EnglishLevelTest extends Seeder
 
                     ],
                     [
-                        'answer' => 'How long for?',
+                        'answer'     => 'How long for?',
                         'is_checked' => '1',
-                        'score' => 2
+                        'score'      => 2
                     ],
                 ]
             ],
             [
                 'question' => 'When do you study?',
-                'answers'=>[
+                'answers'  => [
                     [
-                        'answer' => 'in the evenings',
+                        'answer'     => 'in the evenings',
                         'is_checked' => '1',
-                        'score' => 2
+                        'score'      => 2
                     ],
                     [
                         'answer' => 'in the library',
@@ -166,14 +163,14 @@ class EnglishLevelTest extends Seeder
             ],
             [
                 'question' => 'Would you prefer lemonade or orange juice?',
-                'answers'=>[
+                'answers'  => [
                     [
                         'answer' => 'Are you sure about that?',
                     ],
                     [
-                        'answer' => 'Have you got anything else?',
+                        'answer'     => 'Have you got anything else?',
                         'is_checked' => '1',
-                        'score' => 3
+                        'score'      => 3
                     ],
                     [
                         'answer' => 'If you like.',
@@ -183,7 +180,7 @@ class EnglishLevelTest extends Seeder
             ],
             [
                 'question' => 'I was very _________ in the story.',
-                'answers'=>[
+                'answers'  => [
                     [
                         'answer' => 'interesting',
                     ],
@@ -194,19 +191,19 @@ class EnglishLevelTest extends Seeder
                         'answer' => 'interest',
                     ],
                     [
-                        'answer' => 'interested',
+                        'answer'     => 'interested',
                         'is_checked' => '1',
-                        'score' => 2
+                        'score'      => 2
                     ],
                 ]
             ],
             [
                 'question' => 'Let\'s have dinner now.',
-                'answers'=>[
+                'answers'  => [
                     [
-                        'answer' => 'Tom isn\'t here yet',
+                        'answer'     => 'Tom isn\'t here yet',
                         'is_checked' => '1',
-                        'score' => 3
+                        'score'      => 3
                     ],
                     [
                         'answer' => 'There aren\'t any.',
@@ -218,14 +215,14 @@ class EnglishLevelTest extends Seeder
             ],
             [
                 'question' => 'The snow was _________ heavily when I left the house.',
-                'answers'=>[
+                'answers'  => [
                     [
                         'answer' => 'dropping',
                     ],
                     [
-                        'answer' => 'falling',
+                        'answer'     => 'falling',
                         'is_checked' => '1',
-                        'score' => 3
+                        'score'      => 3
                     ],
                     [
                         'answer' => 'landing',
@@ -237,14 +234,14 @@ class EnglishLevelTest extends Seeder
             ],
             [
                 'question' => 'I can\'t find my keys anywhere - I _________ have left them at work.',
-                'answers'=>[
+                'answers'  => [
                     [
                         'answer' => 'can',
                     ],
                     [
-                        'answer' => 'must',
+                        'answer'     => 'must',
                         'is_checked' => '1',
-                        'score' => 3
+                        'score'      => 3
                     ],
                     [
                         'answer' => 'ought',
@@ -256,7 +253,7 @@ class EnglishLevelTest extends Seeder
             ],
             [
                 'question' => 'When a car pulled out in front of her, Jane did well not to _________ control of her bicycle.',
-                'answers'=>[
+                'answers'  => [
                     [
                         'answer' => 'miss',
                     ],
@@ -264,9 +261,9 @@ class EnglishLevelTest extends Seeder
                         'answer' => 'drop',
                     ],
                     [
-                        'answer' => 'lose',
+                        'answer'     => 'lose',
                         'is_checked' => '1',
-                        'score' => 3
+                        'score'      => 3
                     ],
                     [
                         'answer' => 'fail',
@@ -275,11 +272,11 @@ class EnglishLevelTest extends Seeder
             ],
             [
                 'question' => 'According to Richard\'s _________ the train leaves at 7 o\'clock.',
-                'answers'=>[
+                'answers'  => [
                     [
-                        'answer' => 'information',
+                        'answer'     => 'information',
                         'is_checked' => '1',
-                        'score' => 2
+                        'score'      => 2
                     ],
                     [
                         'answer' => 'knowledge',
@@ -295,7 +292,7 @@ class EnglishLevelTest extends Seeder
             ],
             [
                 'question' => 'When you stay in a country for some time you get used to the people\'s _________ of life.',
-                'answers'=>[
+                'answers'  => [
                     [
                         'answer' => 'habit',
 
@@ -308,23 +305,23 @@ class EnglishLevelTest extends Seeder
 
                     ],
                     [
-                        'answer' => 'way',
+                        'answer'     => 'way',
                         'is_checked' => '1',
-                        'score' => 3
+                        'score'      => 3
                     ],
                 ]
             ],
             [
                 'question' => 'The builders are _________ good progress with the new house.',
-                'answers'=>[
+                'answers'  => [
                     [
                         'answer' => 'doing',
 
                     ],
                     [
-                        'answer' => 'making',
+                        'answer'     => 'making',
                         'is_checked' => '1',
-                        'score' => 3
+                        'score'      => 3
                     ],
                     [
                         'answer' => 'getting',
@@ -337,7 +334,7 @@ class EnglishLevelTest extends Seeder
             ],
             [
                 'question' => 'She is now taking a more positive _________ to her studies and should do well.',
-                'answers'=>[
+                'answers'  => [
                     [
                         'answer' => 'style',
 
@@ -350,24 +347,24 @@ class EnglishLevelTest extends Seeder
 
                     ],
                     [
-                        'answer' => 'attitude',
+                        'answer'     => 'attitude',
                         'is_checked' => '1',
-                        'score' => 4
+                        'score'      => 4
                     ],
                 ]
 
             ],
             [
                 'question' => 'My father _________ his new car for two weeks now.',
-                'answers'=>[
+                'answers'  => [
                     [
                         'answer' => 'had',
 
                     ],
                     [
-                        'answer' => 'has had',
+                        'answer'     => 'has had',
                         'is_checked' => '1',
-                        'score' => 3
+                        'score'      => 3
                     ],
                     [
                         'answer' => 'is having',
@@ -380,11 +377,11 @@ class EnglishLevelTest extends Seeder
             ],
             [
                 'question' => 'What differences are there _________ the English spoken in the UK and the English spoken in the US?',
-                'answers'=>[
+                'answers'  => [
                     [
-                        'answer' => 'between',
+                        'answer'     => 'between',
                         'is_checked' => '1',
-                        'score' => 3
+                        'score'      => 3
                     ],
                     [
                         'answer' => 'beside',
@@ -399,14 +396,14 @@ class EnglishLevelTest extends Seeder
             ],
             [
                 'question' => 'At 6 p.m. I started to get angry with him because he was late _________ .',
-                'answers'=>[
+                'answers'  => [
                     [
                         'answer' => 'usually',
                     ],
                     [
-                        'answer' => 'as usual',
+                        'answer'     => 'as usual',
                         'is_checked' => '1',
-                        'score' => 3
+                        'score'      => 3
                     ],
                     [
                         'answer' => 'typically',
@@ -418,14 +415,14 @@ class EnglishLevelTest extends Seeder
             ],
             [
                 'question' => '_________ you get your father\'s permission, I\'ll take you skiing next weekend.',
-                'answers'=>[
+                'answers'  => [
                     [
                         'answer' => 'Unless',
                     ],
                     [
-                        'answer' => 'Provided',
+                        'answer'     => 'Provided',
                         'is_checked' => '1',
-                        'score' => 4
+                        'score'      => 4
                     ],
                     [
                         'answer' => 'As',
@@ -437,7 +434,7 @@ class EnglishLevelTest extends Seeder
             ],
             [
                 'question' => 'A local company has agreed to _________ the school team with football shirts.',
-                'answers'=>[
+                'answers'  => [
                     [
                         'answer' => 'produce',
                     ],
@@ -445,9 +442,9 @@ class EnglishLevelTest extends Seeder
                         'answer' => 'contribute',
                     ],
                     [
-                        'answer' => 'supply',
+                        'answer'     => 'supply',
                         'is_checked' => '1',
-                        'score' => 4
+                        'score'      => 4
                     ],
                     [
                         'answer' => 'give',
@@ -456,7 +453,7 @@ class EnglishLevelTest extends Seeder
             ],
             [
                 'question' => 'I really enjoy stories that are _________ in the distant future.',
-                'answers'=>[
+                'answers'  => [
                     [
                         'answer' => 'put',
                     ],
@@ -467,22 +464,22 @@ class EnglishLevelTest extends Seeder
                         'answer' => 'placed',
                     ],
                     [
-                        'answer' => 'set',
+                        'answer'     => 'set',
                         'is_checked' => '1',
-                        'score' => 4
+                        'score'      => 4
                     ],
                 ]
             ],
             [
                 'question' => 'That old saucepan will come in _________ when we go camping.',
-                'answers'=>[
+                'answers'  => [
                     [
                         'answer' => 'suitable',
                     ],
                     [
-                        'answer' => 'handy',
+                        'answer'     => 'handy',
                         'is_checked' => '1',
-                        'score' => 4
+                        'score'      => 4
                     ],
                     [
                         'answer' => 'fitting',
@@ -495,14 +492,14 @@ class EnglishLevelTest extends Seeder
             ],
             [
                 'question' => 'Anyone _________ after the start of the play is not allowed in until the interval.',
-                'answers'=>[
+                'answers'  => [
                     [
                         'answer' => 'has arrived',
                     ],
                     [
-                        'answer' => 'arriving',
+                        'answer'     => 'arriving',
                         'is_checked' => '1',
-                        'score' => 3
+                        'score'      => 3
                     ],
                     [
                         'answer' => 'arrived',
@@ -515,14 +512,14 @@ class EnglishLevelTest extends Seeder
             ],
             [
                 'question' => 'I didn\'t _________ driving home in the storm so I stayed overnight in a hotel.',
-                'answers'=>[
+                'answers'  => [
                     [
                         'answer' => 'desire',
                     ],
                     [
-                        'answer' => 'fancy',
+                        'answer'     => 'fancy',
                         'is_checked' => '1',
-                        'score' => 3
+                        'score'      => 3
                     ],
                     [
                         'answer' => 'want',
@@ -535,11 +532,11 @@ class EnglishLevelTest extends Seeder
             ],
             [
                 'question' => 'The judge said that those prepared to _________ in crime must be ready to suffer the consequences.',
-                'answers'=>[
+                'answers'  => [
                     [
-                        'answer' => 'engage',
+                        'answer'     => 'engage',
                         'is_checked' => '1',
-                        'score' => 4
+                        'score'      => 4
                     ],
                     [
                         'answer' => 'involve',
@@ -555,15 +552,15 @@ class EnglishLevelTest extends Seeder
             ],
             [
                 'question' => 'Marianne seemed to take _________ at my comments on her work.',
-                'answers'=>[
+                'answers'  => [
                     [
                         'answer' => 'annoyance',
 
                     ],
                     [
-                        'answer' => 'offence',
+                        'answer'     => 'offence',
                         'is_checked' => '1',
-                        'score' => 4
+                        'score'      => 4
                     ],
                     [
                         'answer' => 'insult',
@@ -576,15 +573,15 @@ class EnglishLevelTest extends Seeder
             ],
             [
                 'question' => 'You should not have a dog if you are not _________ to look after it.',
-                'answers'=>[
+                'answers'  => [
                     [
                         'answer' => 'arranged',
 
                     ],
                     [
-                        'answer' => 'prepared',
+                        'answer'     => 'prepared',
                         'is_checked' => '1',
-                        'score' => 3
+                        'score'      => 3
                     ],
                     [
                         'answer' => 'adapted',
@@ -596,11 +593,11 @@ class EnglishLevelTest extends Seeder
             ],
             [
                 'question' => 'The farmhouse was so isolated that they had to generate their own electricity _________.',
-                'answers'=>[
+                'answers'  => [
                     [
-                        'answer' => 'supply',
+                        'answer'     => 'supply',
                         'is_checked' => '1',
-                        'score' => 4
+                        'score'      => 4
                     ],
                     [
                         'answer' => 'current',
@@ -615,11 +612,11 @@ class EnglishLevelTest extends Seeder
             ],
             [
                 'question' => 'Peter doesn\'t like beer and _________.',
-                'answers'=>[
+                'answers'  => [
                     [
-                        'answer' => 'neither do I',
+                        'answer'     => 'neither do I',
                         'is_checked' => '1',
-                        'score' => 3
+                        'score'      => 3
                     ],
                     [
                         'answer' => 'either do I',
@@ -634,7 +631,7 @@ class EnglishLevelTest extends Seeder
             ],
             [
                 'question' => 'She liked the film, _________?',
-                'answers'=>[
+                'answers'  => [
                     [
                         'answer' => 'doesn\'t she',
                     ],
@@ -642,9 +639,9 @@ class EnglishLevelTest extends Seeder
                         'answer' => 'isn\'t it',
                     ],
                     [
-                        'answer' => 'didn\'t she',
+                        'answer'     => 'didn\'t she',
                         'is_checked' => '1',
-                        'score' => 3
+                        'score'      => 3
                     ],
                     [
                         'answer' => 'won\'t she',
@@ -653,7 +650,7 @@ class EnglishLevelTest extends Seeder
             ],
             [
                 'question' => 'If I had asked the way I _________ got lost.',
-                'answers'=>[
+                'answers'  => [
                     [
                         'answer' => 'won\'t have',
                     ],
@@ -664,19 +661,19 @@ class EnglishLevelTest extends Seeder
                         'answer' => 'not have',
                     ],
                     [
-                        'answer' => 'wouldn\'t have',
+                        'answer'     => 'wouldn\'t have',
                         'is_checked' => '1',
-                        'score' => 3
+                        'score'      => 3
                     ],
                 ]
             ],
             [
                 'question' => 'Would you mind _________ me five dollars.',
-                'answers'=>[
+                'answers'  => [
                     [
-                        'answer' => 'lending',
+                        'answer'     => 'lending',
                         'is_checked' => '1',
-                        'score' => 3
+                        'score'      => 3
                     ],
                     [
                         'answer' => 'lend',
@@ -692,7 +689,7 @@ class EnglishLevelTest extends Seeder
             ],
             [
                 'question' => 'The amount of money taken or the amount of goods sold after all the deductions, taxes etc., is the',
-                'answers'=>[
+                'answers'  => [
                     [
                         'answer' => 'revenue',
                     ],
@@ -700,9 +697,9 @@ class EnglishLevelTest extends Seeder
                         'answer' => 'turnover',
                     ],
                     [
-                        'answer' => 'profit',
+                        'answer'     => 'profit',
                         'is_checked' => '1',
-                        'score' => 3
+                        'score'      => 3
                     ],
                     [
                         'answer' => 'income',
@@ -712,23 +709,22 @@ class EnglishLevelTest extends Seeder
 
         ];
 
-        $quiz = Section::create($quiz);
-        $quiz->results()->createMany($results);
+        $quiz = Section::create( $quiz );
+        $quiz->results()->createMany( $results );
 
         foreach ( $questions as $question ) {
             $questionArr = [
-                'question' => $question['question'],
-                'is_active' => '1',
+                'question'   => $question['question'],
+                'is_active'  => '1',
                 'section_id' => $quiz->id
-                ];
-         $newQuestion =  Question::create($questionArr);
-         if($question['answers']) {
-             $newQuestion->answers()->createMany( $question['answers'] );
-         }
+            ];
+            $newQuestion = Question::create( $questionArr );
+            if ( $question['answers'] ) {
+                $newQuestion->answers()->createMany( $question['answers'] );
+            }
         }
 
     }
-
 
 
 }

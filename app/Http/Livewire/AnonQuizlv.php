@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Log;
 use Livewire\Component;
 use App\Models\Question;
 use App\Models\QuizHeader;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class AnonQuizlv extends Component
 {
@@ -115,6 +116,68 @@ class AnonQuizlv extends Component
         $this->setupQuiz = false;
         $this->quizInProgress = true;
     }
+
+    public function startQ($quizId){
+
+        $this->sectionId = $quizId;
+        // Create a new quiz header in quiz_headers table and populate initial quiz information
+        // Keep the instance in $this->quizid veriable for later updates to quiz.
+        /* $this->validate();*/
+        //session()->flash('message', 'Post successfully updated.');
+       /* Alert::success('Success Title', 'Success Message');*/
+
+        if(!auth()->user()){
+            $this->dispatchBrowserEvent('swal:modal',[
+                'type' =>'warning',
+                'title' => 'das',
+                'text' => '',
+            ]);
+
+          //  alert()->success('SuccessAlert','Lorem ipsum dolor sit amet.');
+
+           // session()->flash('message', 'First Login on');
+/*            $userRole = Role::where( 'name', '=', 'user' )->first();
+            $user = User::firstOrCreate(
+                [
+                    'phone' =>  $this->phone,
+                    'email' =>$this->email
+                ],
+                [
+                    'name' => $this->name,
+                    'password' => bcrypt(rand(2,7))
+                ]
+            );
+
+            if($user->wasRecentlyCreated){
+                $user->roles()->attach($userRole);
+                Auth::login($user);
+            } else {
+                return 'вы уже зарегистрированы на сайте';
+            }*/
+
+       } else {
+
+            $user = Auth::user();
+
+            $this->quizSize = Question::where('section_id', $this->sectionId)->count();
+            $this->quizid = QuizHeader::create([
+                'user_id' => $user->id,
+                'quiz_size' => $this->quizSize,
+                'section_id' => $this->sectionId,
+            ]);
+            $this->count = 1;
+
+
+            // Get the first/next question for the quiz.
+            // Since we are using LiveWire component for quiz, the first quesiton and answers will be displayed through mount function.
+            $this->currentQuestion = $this->getNextQuestion();
+            $this->setupQuiz = false;
+            $this->quizInProgress = true;
+        }
+
+    }
+
+
     public function getNextQuestion()
     {
         //Return a random question from the section selected by the user for quiz.

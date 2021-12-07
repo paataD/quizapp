@@ -9,7 +9,7 @@
                 <span class="font-bold p-2 leading-loose bg-blue-500 text-white rounded-lg">{{Auth::user()->name}}</span>
             </h1>
             <p class="mt-1 max-w-2xl text-sm text-gray-500">
-                <span class="text-gray-400 font-extrabold p-1">Quiz Progress </span>
+                <span class="text-gray-400 font-extrabold p-1">{{__('quiz.Questions')}}</span>
                 <span class="font-bold p-3 leading-loose bg-blue-500 text-white rounded-full">{{$count .'/'. $quizSize}}</span>
             </p>
         </div>

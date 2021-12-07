@@ -22,7 +22,7 @@
                         {{ __('quiz.Take Quiz') }}
                     </x-jet-nav-link>
                     <x-jet-nav-link href="{{ route('userQuizHome') }}" :active="request()->routeIs('userQuizHome')">
-                        {{ __('User Quiz Home') }}
+                        {{ __('quiz_dash.My Quizzes') }}
                     </x-jet-nav-link>
                     @endhasrole
                 </div>
@@ -49,17 +49,17 @@
                             <div class="w-60">
                                 <!-- Team Management -->
                                 <div class="block px-4 py-2 text-xs text-gray-400">
-                                    {{ __('Manage Team') }}
+                                    {{ __('profile.manage_team') }}
                                 </div>
 
                                 <!-- Team Settings -->
                                 <x-jet-dropdown-link href="{{ route('teams.show', Auth::user()->currentTeam->id) }}">
-                                    {{ __('Team Settings') }}
+                                    {{ __('profile.team_settings') }}
                                 </x-jet-dropdown-link>
 
                                 @can('create', Laravel\Jetstream\Jetstream::newTeamModel())
                                 <x-jet-dropdown-link href="{{ route('teams.create') }}">
-                                    {{ __('Create New Team') }}
+                                    {{ __('profile.create_new_team') }}
                                 </x-jet-dropdown-link>
                                 @endcan
 
@@ -67,7 +67,7 @@
 
                                 <!-- Team Switcher -->
                                 <div class="block px-4 py-2 text-xs text-gray-400">
-                                    {{ __('Switch Teams') }}
+                                    {{ __('profile.switch_teams') }}
                                 </div>
 
                                 @foreach (Auth::user()->allTeams() as $team)
@@ -103,16 +103,16 @@
                         <x-slot name="content">
                             <!-- Account Management -->
                             <div class="block px-4 py-2 text-xs text-gray-400">
-                                {{ __('Manage Account') }}
+                                {{ __('profile.manage_account') }}
                             </div>
 
                             <x-jet-dropdown-link href="{{ route('profile.show') }}">
-                                {{ __('Profile') }}
+                                {{ __('profile.profile') }}
                             </x-jet-dropdown-link>
 
                             @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
                             <x-jet-dropdown-link href="{{ route('api-tokens.index') }}">
-                                {{ __('API Tokens') }}
+                                {{ __('profile.api_tokens') }}
                             </x-jet-dropdown-link>
                             @endif
 
@@ -124,7 +124,7 @@
 
                                 <x-jet-dropdown-link href="{{ route('logout') }}" onclick="event.preventDefault();
                                                 this.closest('form').submit();">
-                                    {{ __('Log Out') }}
+                                    {{ __('profile.log_out') }}
                                 </x-jet-dropdown-link>
                             </form>
                         </x-slot>
@@ -157,7 +157,7 @@
                 {{ __('quiz.Take Quiz') }}
             </x-jet-responsive-nav-link>
             <x-jet-responsive-nav-link href="{{ route('userQuizHome') }}" :active="request()->routeIs('userQuizHome')">
-                {{ __('User Quiz Home') }}
+                {{ __('quiz_dash.My Quizzes') }}
             </x-jet-responsive-nav-link>
             @endhasrole
         </div>
@@ -180,7 +180,7 @@
             <div class="mt-3 space-y-1">
                 <!-- Account Management -->
                 <x-jet-responsive-nav-link href="{{ route('profile.show') }}" :active="request()->routeIs('profile.show')">
-                    {{ __('Profile') }}
+                    {{ __('profile.profile') }}
                 </x-jet-responsive-nav-link>
 
                 @if (Laravel\Jetstream\Jetstream::hasApiFeatures())

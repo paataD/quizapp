@@ -1,8 +1,9 @@
 <x-app-layout>
+    <x-slot name="title">{{ __('quiz.my_quizzes_list')}}</x-slot>
     <x-slot name="header">
         <div class="md:flex justify-between">
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                {{ __('User Quiz Home') }}
+                {{ __('quiz_dash.My Quizzes') }}
             </h2>
         </div>
     </x-slot>
@@ -61,7 +62,7 @@
                         {{ __('quiz_dash.No Quizzes found!') }}
                     </h1>
                     <p class="mt-1 max-w-2xl text-sm text-gray-500">
-                        Looks like you have just landed! Once you have taken a quiz it will be listed here.
+                       {{ __('quiz_dash.looks_like_you_have_just_landed!_Once_you_have_taken_a_quiz_it_will_be_listed_here') }}
                     </p>
                 </div>
                 @else
@@ -89,7 +90,7 @@
                                             </th>
                                         </tr>
                                     </thead>
-                                    <tbody class="capitalize bg-white divide-y divide-gray-200">
+                                    <tbody class="bg-white divide-y divide-gray-200">
                                         @foreach($userQuizzes as $quiz)
                                         <tr class="hover:bg-green-100">
                                             <td class="px-6 ">
@@ -104,7 +105,7 @@
                                                 </div>
                                             </td>
                                             <td class="px-6 py-1">
-                                                <div class="text-sm text-gray-900">{{ $quiz->completed ? __('quiz_dash.Completed') : __('quiz_dev.Not Completed') }}</div>
+                                                <div class="text-sm text-gray-900">{{ $quiz->completed ? __('quiz_dash.Completed') : __('quiz_dash.Not Completed') }}</div>
                                             </td>
                                             <td class="px-6 py-1">
                                                 <div class="text-sm ">
@@ -116,10 +117,9 @@
                                             </td>
                                             <td class="sm:flex align-middle justify-center items-center px-6 py-1 text-right text-sm font-medium">
                                                 <a href="{{route('userQuizDetails', $quiz->id)}}" class="text-green-500 hover:text-green-700">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" class="text-blue-500 hover:text-blue-700 h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z" clip-rule="evenodd" />
-                                                    </svg>
+                                                    <i class="fas fa-search text-blue-500"></i>
                                                 </a>
+                                                @hasrole('admin')
                                                 <form action="{{route('deleteUserQuiz', $quiz->id)}}" method="post">
                                                     @csrf
                                                     <a class="text-red-500 hover:text-red-700">
@@ -130,6 +130,7 @@
                                                         </button>
                                                     </a>
                                                 </form>
+                                                @endrole
                                             </td>
                                         </tr>
                                         @endforeach
@@ -160,7 +161,7 @@
             hooks: new ChartisanHooks()
                 .colors()
                 .beginAtZero()
-                .title('Quiz Scores')
+                .title('{{__('quiz_dash.quiz_scores')}}')
                 .datasets(['line'])
                 .stepSize(25)
                 .responsive()

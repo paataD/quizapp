@@ -10,7 +10,7 @@
         <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
             <div class="mx-auto">
                 <div class="flex justify-between items-center py-4">
-                    <a href="{{route('createQuestion',$section->id)}}" class="tracking-wide font-bold rounded border-2 border-blue-500 hover:border-blue-500 bg-blue-500 text-white hover:bg-blue-600 transition shadow-md py-2 px-6 items-center">Create a Question</a>
+                    <a href="{{route('createQuestion',$section->id)}}" class="tracking-wide font-bold rounded border-2 border-blue-500 hover:border-blue-500 bg-blue-500 text-white hover:bg-blue-600 transition shadow-md py-2 px-6 items-center">{{__('quiz_dash.Create a Question')}}</a>
                     <a href="{{route('listSection')}}" class="tracking-wide font-bold rounded border-2 border-blue-500 hover:border-blue-500 bg-blue-500 text-white hover:bg-blue-600 transition shadow-md py-2 px-6 items-center">{{ __('quiz_dash.Back') }}</a>
                 </div>
                 <!-- --------------------- START NEW TABLE --------------------->
@@ -130,7 +130,7 @@
                                         <thead class="tracking-wide font-bold rounded border-2 bg-green-500 text-white  transition shadow-md py-2 px-6 items-center">
                                         <tr>
                                             <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-white uppercase tracking-wider">
-                                                Name
+                                                {{ __('quiz_dash.Name') }}
                                             </th>
                                             <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-white uppercase tracking-wider">
                                                 Point start
@@ -139,11 +139,11 @@
                                                 Point end
                                             </th>
                                             <th scope="col" class="relative px-6 py-3">
-                                                <span class="sr-only">Edit</span>
+                                                <span class="sr-only">{{ __('quiz_dash.Edit') }}</span>
                                             </th>
                                         </tr>
                                         </thead>
-                                        <tbody class="capitalize bg-white divide-y divide-gray-200">
+                                        <tbody class="bg-white divide-y divide-gray-200">
                                         @foreach($section->results as $result)
                                             <tr class="hover:bg-green-100">
                                                 <td class="px-6 ">
@@ -228,6 +228,9 @@
                                                 Name
                                             </th>
                                             <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-white uppercase tracking-wider">
+                                                Points
+                                            </th>
+                                            <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-white uppercase tracking-wider">
                                                 Status
                                             </th>
                                             <th scope="col" class="relative px-6 py-3">
@@ -235,7 +238,7 @@
                                             </th>
                                         </tr>
                                     </thead>
-                                    <tbody class="capitalize bg-white divide-y divide-gray-200">
+                                    <tbody class="bg-white divide-y divide-gray-200">
                                         @foreach($questions as $question)
                                         <tr class="hover:bg-green-100">
                                             <td class="px-6 ">
@@ -248,6 +251,11 @@
                                                         </div>
                                                     </div>
                                                 </div>
+                                            </td>
+                                            <td class="px-6 py-1">
+                                                        <div class="text-sm font-medium text-gray-900">
+                                                                {{ $question->answ_score_sum}}
+                                                        </div>
                                             </td>
                                             <td class="px-6 py-1">
                                                 <div class="text-sm text-gray-900">{{ $question->is_active === '1'  ? 'Yes' : 'No' }}</div>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Section;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Redirect;
 
@@ -53,7 +54,13 @@ class SectionsController extends Controller
     public function detailSection(Section $section)
     {
         $section = Section::with('results')->where('id',$section->id)->first();
-        $questions = $section->questions()->paginate(30);
+       // $questions_count = Section::count('id' ->where)->where('id',$section->id)
+        $questions = $section->questions();
+        //$questions_count = $questions->count();
+
+
+       // return $questions_count = $questions->answeres()->sum();
+        $questions = $questions->withSum('answers as answ_score_sum', 'score')->paginate(30);
         return view('admins.detail_sections', compact('questions', 'section'));
     }
 

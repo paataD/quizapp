@@ -50,7 +50,9 @@ class QuestionsController extends Controller
         ]);
 
         ///Log::debug($data['answers']);
+        if(!empty($answer)) {
         $question->answers()->createMany($request->answers);
+        }
         return redirect()->route('detailSection', $section->id)
             ->withSuccess('Question created successfully');
     }
@@ -62,9 +64,12 @@ class QuestionsController extends Controller
         $question = $request->question;
         $answers = $request->answers;
         $record->update($question);
-
+        Log::debug($answers);
         foreach($answers as $key => $answer) {
-          $answer =  Answer::where('id', '=', $key)->update($answers[$key]);
+            Log::debug($answer);
+            if(!empty($answer)) {
+                Answer::where( 'id', '=', $key )->update( $answer );
+            }
         }
 
         session()->flash('success', 'Question update successfully!');

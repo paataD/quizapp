@@ -33,6 +33,19 @@ class CreateQuizzesTable extends Migration
      */
     public function down()
     {
+        Schema::table('quizzes', function (Blueprint $table) {
+            $table->dropForeign('quizzes_user_id_foreign');
+            //$table->dropColumn('user_id');
+            $table->dropForeign('quizzes_quiz_header_id_foreign');
+          //  $table->dropColumn('quiz_header_id');
+            $table->dropForeign('quizzes_section_id_foreign');
+           // $table->dropColumn('section_id');
+            $table->dropForeign('quizzes_question_id_foreign');
+           // $table->dropColumn('question_id');
+            $table->dropForeign('quizzes_answer_id_foreign');
+           // $table->dropColumn('answer_id');
+        });
+
         Schema::dropIfExists('quizzes');
     }
 }

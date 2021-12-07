@@ -18,6 +18,7 @@ class DatabaseSeeder extends Seeder
             RolesPermissionsSeeder::class,
             AdminUserSeeder::class,
             QuoteSeeder::class,
+            EnglishLevelTest::class,
         ]);
     }
 }

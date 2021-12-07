@@ -2,7 +2,7 @@
     <x-slot name="header">
         <div class="md:flex justify-between">
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                {{ __('Section Home') }}
+                {{ __('quiz_dash.Quizzes') }}
             </h2>
         </div>
     </x-slot>
@@ -17,7 +17,7 @@
                 @if($sections->isEmpty())
                 <div class="px-4 py-5 sm:px-6">
                     <h1 class="text-sm leading-6 font-medium text-gray-900">
-                        No Sections found!
+                        No Quizzes found!
                     </h1>
                     <p class="mt-1 max-w-2xl text-sm text-gray-500">
                         Looks like you have just landed! Once you have created any sections, they will be listed here.
@@ -33,20 +33,20 @@
                                     <thead class="tracking-wide font-bold rounded border-2 bg-green-500 text-white  transition shadow-md py-2 px-6 items-center">
                                         <tr>
                                             <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-white uppercase tracking-wider">
-                                                Name
+                                                {{ __('quiz_dash.name') }}
                                             </th>
                                             <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-white uppercase tracking-wider">
-                                                Published
+                                                {{ __('quiz_dash.published') }}
                                             </th>
                                             <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-white uppercase tracking-wider">
-                                                Questions
+                                                {{ __('quiz_dash.Questions') }}
                                             </th>
                                             <th scope="col" class="relative px-6 py-3">
                                                 <span class="sr-only">Edit</span>
                                             </th>
                                         </tr>
                                     </thead>
-                                    <tbody class="capitalize bg-white divide-y divide-gray-200">
+                                    <tbody class="bg-white divide-y divide-gray-200">
                                         @foreach($sections as $section)
                                         <tr class="hover:bg-green-100">
                                             <td class="px-6 ">
@@ -67,11 +67,6 @@
                                                 <div class="text-sm text-gray-900">{{ $section->questions_count }}</div>
                                             </td>
                                             <td class="sm:flex align-middle justify-center items-center px-6 py-1 text-right text-sm font-medium">
-                                                <a href="{{ route('createQuestion', $section->id )}}" class="text-green-500 hover:text-green-700">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" class="text-blue-500 hover:text-blue-700 h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z" clip-rule="evenodd" />
-                                                    </svg>
-                                                </a>
                                                 <a href="{{ route('editSection', $section->id )}} " class="text-green-500 hover:text-green-700">
                                                     <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" viewBox="0 0 20 20" fill="currentColor">
                                                         <path d="M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z" />

@@ -5,13 +5,11 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Laravel</title>
+    <title>@yield('title', __('quiz.quiz_system'))</title>
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
 
-    <!-- Styles -->
-    <!-- Styles -->
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
     @livewireStyles
 </head>
@@ -33,12 +31,27 @@
         @endif
 
         <div class="max-w-10xl mx-auto sm:px-6 lg:px-8">
-           <div>
+
                <livewire:anon-quizlv />
-           </div>
+
         </div>
+
     </div>
+
     @livewireScripts
+    @include('vendor.sweetalert.alert')
+    <script>
+        window.addEventListener('swal:modal', event =>{
+            console.log(event.detail);
+            Swal.fire({
+                title: event.detail.title,
+                text: event.detail.text,
+                icon: event.detail.type,
+                buttons: true
+            });
+        });
+    </script>
+    @stack('js')
 </body>
 
 </html>

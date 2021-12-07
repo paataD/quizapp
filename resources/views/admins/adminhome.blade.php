@@ -82,7 +82,7 @@
                 size: [60, 60],
                 type: 'bar',
                 textColor: '#ffff00',
-                text: 'Loading chart data...',
+                text: '{{ trans('charts.loading_chart_data') }}',
             },
             hooks: new ChartisanHooks()
                 .colors()
@@ -102,7 +102,7 @@
                 size: [60, 60],
                 type: 'bar',
                 textColor: '#ffff00',
-                text: 'Loading chart data...',
+                text: '{{ trans('charts.loading_chart_data') }}',
             },
             hooks: new ChartisanHooks()
                 .colors()

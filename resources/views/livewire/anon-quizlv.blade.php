@@ -9,7 +9,7 @@
                 <span class="font-bold p-2 leading-loose bg-blue-500 text-white rounded-lg">{{Auth::user()->name}}</span>
             </h1>
             <p class="mt-1 max-w-2xl text-sm text-gray-500">
-                <span class="text-gray-400 font-extrabold p-1">Quiz Progress </span>
+                <span class="text-gray-400 font-extrabold p-1">{{__('quiz.Questions')}}</span>
                 <span class="font-bold p-3 leading-loose bg-blue-500 text-white rounded-full">{{$count .'/'. $quizSize}}</span>
             </p>
         </div>
@@ -104,7 +104,17 @@
     @endif
 
     @if($setupQuiz)
+
     <section class="text-gray-600 mx-auto body-font">
+        @if (session()->has('message'))
+
+            <div class="alert alert-success">
+
+                {{ session('message') }}
+
+            </div>
+
+        @endif
         <div class="container px-5 py-2 mx-auto">
             <div class="">
                 <form class="flex flex-wrap -m-4 w-full" wire:submit.prevent="startQuiz">
@@ -114,22 +124,22 @@
                     <h2 class="text-gray-900 text-lg font-medium title-font mb-5">Контакты</h2>
                     <label class="block">
                         <span class="text-gray-700">Имя</span>
-                        <input name="name" wire:model="name" class="block w-full mt-1 rounded-md bg-gray-100 border-2 border-gray-500 focus:bg-white focus:ring-0">
+                        <input type="text" name="name" wire:model="name" class="block w-full mt-1 rounded-md bg-gray-100 border-2 border-gray-500 focus:bg-white focus:ring-0">
                         @error('name') <span class="text-red-400 text-xs">{{ $message }}</span> @enderror
                     </label>
                     <label class="block">
                         <span class="text-gray-700">Email</span>
-                        <input name="name" wire:model="email" class="block w-full mt-1 rounded-md bg-gray-100 border-2 border-gray-500 focus:bg-white focus:ring-0">
+                        <input type="email" name="name" wire:model="email" class="block w-full mt-1 rounded-md bg-gray-100 border-2 border-gray-500 focus:bg-white focus:ring-0">
                         @error('email') <span class="text-red-400 text-xs">{{ $message }}</span> @enderror
                     </label>
                     <label class="block">
                         <span class="text-gray-700">Телефон</span>
-                        <input name="name" wire:model="phone" class="block w-full mt-1 rounded-md bg-gray-100 border-2 border-gray-500 focus:bg-white focus:ring-0">
+                        <input type="text" name="name" wire:model="phone" class="block w-full mt-1 rounded-md bg-gray-100 border-2 border-gray-500 focus:bg-white focus:ring-0">
                         @error('phone') <span class="text-red-400 text-xs">{{ $message }}</span> @enderror
                     </label>
                 </div>
                     @endif
-                <div class="p-4 md:w-1/2 w-full">
+                {{--<div class="p-4 md:w-1/2 w-full">
 
                         <h2 class="text-gray-900 text-lg font-medium title-font mb-5">Пройти тест</h2>
                         <div class="relative mx-full mb-4">
@@ -151,10 +161,31 @@
 
                         <button type="submit" class="block w-full text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">Начать тест</button>
 
-                </div>
+                </div>--}}
                 </form>
             </div>
         </div>
     </section>
+
+        <div class="bg-white">
+            <div class="max-w-2xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
+
+                <div class="grid grid-cols-1 gap-y-10 sm:grid-cols-2 gap-x-6 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
+                    @foreach($sections as $section)
+                    <a href="#" wire:click="startQ({{ $section->id }})" class="group">
+                        <div class="w-full aspect-w-1 aspect-h-1 bg-gray-200 rounded-lg overflow-hidden xl:aspect-w-7 xl:aspect-h-8">
+                            <img src="{{ asset('/images/quizz-placeholder.png') }}" alt="lablang-quizz" class="w-full h-full object-center object-cover group-hover:opacity-75">
+                        </div>
+                        <h3 class="mt-4 text-md text-gray-700">
+                            {{ $section->name }}
+                        </h3>
+
+                    </a>
+                    @endforeach
+                </div>
+            </div>
+        </div>
+
+
     @endif
 </div>

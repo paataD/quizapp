@@ -1,0 +1,27 @@
+<?php
+
+return [
+    'manage_account' => 'Управление аккаунтом',
+    'profile' => 'Профиль',
+    'profile_information' => 'О Вас',
+    'log_out' => 'Выход',
+    'cancel' => 'Отменить',
+    'photo' => 'Фото',
+    'reomove_photo' => 'Удалить фото',
+    'name' => 'Имя',
+    'update Password' => 'Обновить пароль',
+    'current_password' => 'Текущий пароль',
+    'new_password' => 'Новый пароль',
+    'confirm_password' => 'Подтвердите пароль',
+    'save' => 'Сохранить',
+    'saved' => 'Сохранено',
+    'new_photo' => 'Загрузить новую фотографию',
+    'update_password'=> 'Обновить пароль',
+    'this_device' => 'Это устройство',
+    '' => 'Выйти на всех устройствах',
+    'update_your_account\'s_profile_information_and_email_address' => 'Обновление персональной информации и email адреса.',
+    'ensure_your_account_is_using_strong_password' => 'Убедитесь, что Ваш аккаунт защищен надежным паролем.',
+    'log_out_other_browser_sessions' => 'Выйти с сайта на всех устройствах',
+    'password' => 'Пароль',
+    'email' => 'Email',
+];
