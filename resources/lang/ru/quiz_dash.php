@@ -51,9 +51,13 @@ return [
     'Create a Quiz' => 'Новый Тест',
     'Quiz Name' => 'Название Теста',
     'Quiz Description' => 'Описание Теста',
+    'Description' => 'Описание',
     'New Quiz' => 'Новый Тест',
     'Testing' => 'Тестирование',
     'looks_like_you_have_just_landed!_Once_you_have_taken_a_quiz_it_will_be_listed_here' => 'Кажется, что Вы недавно зарегистрировались? Как только Вы начнете проходить тест, он появится здесь.',
-    'quiz_scores' => 'Результаты тестов'
+    'quiz_scores' => 'Результаты тестов',
+    'created_by' => 'Создано',
+    'edit_quiz' => 'Редактировать тест',
+    'edit_result' => 'Редактировать результат',
 
 ];

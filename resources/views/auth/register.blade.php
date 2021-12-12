@@ -11,6 +11,11 @@
             </div>
 
             <div class="mt-4">
+                <x-jet-label for="phone" value="{{ __('auth.phone') }}" />
+                <x-jet-input id="phone" class="block mt-1 w-full" type="tel" name="email" :value="old('phone')" required />
+            </div>
+
+            <div class="mt-4">
                 <x-jet-label for="email" value="{{ __('Email') }}" />
                 <x-jet-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
             </div>
@@ -53,4 +58,17 @@
             </div>
         </form>
     </x-jet-authentication-card>
+
+
+    @push('js')
+    <script>
+        var element = document.getElementById('phone');
+        var maskOptions = {
+            mask: '+{7}(000)000-00-00'
+        };
+        IMask(element, maskOptions);
+    </script>
+    @endpush
 </x-guest-layout>
+
+

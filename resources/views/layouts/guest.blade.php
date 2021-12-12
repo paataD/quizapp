@@ -15,12 +15,19 @@
 
         <!-- Scripts -->
         <script src="{{ mix('js/app.js') }}" defer></script>
+        <script src="https://unpkg.com/imask"></script>
     </head>
     <body>
         <div class="font-sans text-gray-900 antialiased">
             {{ $slot }}
         </div>
-
-
+        @stack('js')
+        <script>
+            var element = document.getElementById('phone');
+            var maskOptions = {
+                mask: '+{7}(000)000-00-00'
+            };
+           IMask(element, maskOptions);
+        </script>
     </body>
 </html>

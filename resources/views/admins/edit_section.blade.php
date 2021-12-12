@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('edit Section') }}
+            {{ __('quiz_dash.edit_quiz') }}
         </h2>
     </x-slot>
     <div class="max-w-7xl m-4 mx-auto sm:px-6 lg:px-8">
@@ -33,10 +33,10 @@
                                 @enderror
                                 <select name="is_active" value="{{old('is_active', $section->is_active)}}" class="block w-full mt-1 rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0">
                                     <option value="1" {{ $section->is_active === '1' ? 'selected' : '' }}>
-                                        Yes
+                                        {{ __('quiz_dash.Yes') }}
                                     </option>
                                     <option value="0" {{ $section->is_active === '0' ? 'selected' : '' }}>
-                                        No
+                                        {{ __('quiz_dash.No') }}
                                     </option>
                                 </select>
                             </label>

@@ -21,6 +21,7 @@ class CreateQuizHeadersTable extends Migration
             $table->unsignedInteger('quiz_size');
             $table->text('questions_taken')->nullable()->default(null);
             $table->integer('score')->unsigned()->nullable();
+            $table->foreignId('result_id')->nullable()->constrained()->onDelete('cascade');
             $table->double('quiz_perc', 2)->default(0);
             $table->timestamps();
         });
