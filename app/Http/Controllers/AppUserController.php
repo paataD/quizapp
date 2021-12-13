@@ -75,10 +75,13 @@ class AppUserController extends Controller
         //Get the actual quiz questiona and answers from Quiz table using quiz_header_id
         $userQuiz = Quiz::where('quiz_header_id', $userQuizDetails->id)
             ->orderBy('question_id', 'ASC')->get();
-        //dd($userQuiz);
-        //Get the Questions and related answers taken by the user during the quiz
-        $quizQuestions = Question::whereIn('id', $quizQuestionsList)->orderBy('id', 'ASC')->with('answers')->get();
 
+        //Get the Questions and related answers taken by the user during the quiz
+        $quizQuestions = Question::whereIn('id', $quizQuestionsList)->orderBy('id', 'ASC')
+                                                                    ->with(['answers' =>function($query) {
+                                                                    }])
+                                                                    ->get();
+      //  return $quizQuestions;
         //pass the data using compact to the view to display
         return view(
             'appusers.userQuizDetail',

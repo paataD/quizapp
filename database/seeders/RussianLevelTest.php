@@ -9,7 +9,7 @@ class RussianLevelTest extends Seeder {
 
     public function run() {
         $quiz      = [
-            'name'              => 'Italian Level test',
+            'name'              => 'Russian language Level test',
             'is_active'         => '1',
             'user_id'           => 1,
             'shuffle_quest_flg' => 1
@@ -415,8 +415,6 @@ class RussianLevelTest extends Seeder {
             ]
 
         ];
-
-
     }
 }
 

@@ -18,5 +18,12 @@ return [
 
     'Questions' => 'Вопросы',
     'Take Quiz' => 'Пройти тест',
-    'take_a_new_quiz' => 'Пройти новый тест'
+    'take_a_new_quiz' => 'Пройти новый тест',
+    'explanation' => 'Объяснение',
+    'show_quiz_details' => 'Показать результаты теста',
+    'min' => '(в минутах)',
+    'passed_quizzes' => 'Пройденные тесты',
+    'score' => 'Баллы',
+    'result' => 'Резльтат',
+    'don\'t_know_the_answer' => 'Не знаю ответ'
 ];

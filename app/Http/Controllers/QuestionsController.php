@@ -36,7 +36,7 @@ class QuestionsController extends Controller
     {
 
         $request->validate([
-            'question' => ['required', Rule::unique('questions')],
+            'question' => ['required'],
             'is_active' => 'required',
         ]);
 
@@ -49,9 +49,9 @@ class QuestionsController extends Controller
             'section_id' => $section->id,
         ]);
 
-        ///Log::debug($data['answers']);
-        if(!empty($answer)) {
-        $question->answers()->createMany($request->answers);
+
+        if(!empty($request->answers)) {
+            $question->answers()->createMany($request->answers);
         }
         return redirect()->route('detailSection', $section->id)
             ->withSuccess('Question created successfully');

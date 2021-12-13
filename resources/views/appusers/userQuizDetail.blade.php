@@ -78,10 +78,12 @@
         @php
         $userAnswer = $userQuiz[$key];
         @endphp
+
         <div class="bg-white shadow overflow-hidden sm:rounded-lg mt-6">
             <div class="px-4 py-5 sm:px-6">
                 <h3 class="text-lg leading-6 mb-2 font-medium text-gray-900">
                     <span class="mr-2 font-extrabold"> {{$key + 1}}</span> {{$question->question}}
+                    @if($question->explanation)
                     <div x-data={show:false} class="block text-xs">
                         <div class="p-1" id="headingOne">
                             <button @click="show=!show" class="underline text-blue-500 hover:text-blue-700 focus:outline-none text-xs " type="button">
@@ -92,26 +94,34 @@
                             {{$question->explanation}}
                         </div>
                     </div>
+                    @endif
                 </h3>
                 @foreach($question->answers as $key => $answer)
                 @if(($userAnswer->is_correct==='1') && ($answer->is_checked ==='1'))
                 <div class="mt-1 max-w-auto text-sm px-2 rounded-lg text-white bg-none bg-green-500">
-                    <span class="mr-2 font-extrabold">{{$choice->values()->get($key)}} </span> {{$answer->answer}}
+                    <span class="mr-2 font-extrabold">{{ $loop->index+1 }}. </span> {{$answer->answer}}
                 </div>
-                @elseif(($userAnswer->answer_id === $answer->id) && ($answer->is_checked === '0'))
+              @elseif(($userAnswer->answer_id === $answer->id) && ($answer->is_checked === '0'))
                 <div class="mt-1 max-w-auto text-sm px-2 rounded-lg text-white bg-red-600 font-extrabold ">
                     <span class="mr-2 font-extrabold">{{$choice->values()->get($key)}} </span> {{$answer->answer}}
                 </div>
-                @elseif($answer->is_checked && $userAnswer->is_correct === '0')
+
+                @elseif($userAnswer->is_correct == '0'  && $answer->is_checked)
                 <div class="mt-1 max-w-auto text-sm px-2 rounded-lg text-white bg-green-500 font-extrabold ">
-                    <span class="mr-2 font-extrabold">{{$choice->values()->get($key)}} </span> {{$answer->answer}} <span class="p-1 font-extrabold">({{ __('quiz_dash.Correct Answer') }})</span>
+                    <span class="mr-2 font-extrabold">{{ $loop->index+1 }}. </span> {{$answer->answer}} <span class="p-1 font-extrabold">({{ __('quiz_dash.Correct Answer') }})</span>
                 </div>
                 @else
                 <div class="mt-1 max-w-auto text-sm px-2 rounded-lg text-gray-500 font-extrabold ">
-                    <span class="mr-2 font-extrabold">{{$choice->values()->get($key)}} </span> {{$answer->answer}}
+                    <span class="mr-2 font-extrabold">{{ $loop->index+1 }}. </span> {{$answer->answer}}
                 </div>
                 @endif
+
                 @endforeach
+                @if(is_null($userAnswer->answer_id))
+                    <div class="mt-1 max-w-auto text-sm px-2 rounded-lg text-white bg-red-600 font-extrabold ">
+                       {{$answer->answer}} <span class="p-1 font-extrabold">({{ __('quiz.don\'t_know_the_answer') }})</span>
+                    </div>
+                @endif
             </div>
         </div>
         @endforeach
